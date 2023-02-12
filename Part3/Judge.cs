@@ -20,13 +20,17 @@ namespace Part3
         public Singer Judging(params Singer[] singers)
         {
             var rand = new Random();
-            int sum = 0;
+            int sum = amountOfPeopleInTheAudience / 2;
 
             if (amountOfPeopleInTheAudience <= 0)
                 amountOfPeopleInTheAudience = 1;
 
-            for (int i = 0; i < amountOfPeopleInTheAudience; i++)
-                sum += rand.Next(0, 2);
+            while(sum == amountOfPeopleInTheAudience / 2)
+            {
+                sum = 0;
+                for (int i = 0; i < amountOfPeopleInTheAudience; i++)
+                    sum += rand.Next(0, 2);
+            }
 
             Singer winner = sum > amountOfPeopleInTheAudience / 2 ? singers[0] : singers[1];
             Console.WriteLine("The winner of the singing contest is...");
