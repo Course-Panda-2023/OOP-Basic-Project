@@ -1,6 +1,21 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿namespace MySingingContest
+{
 
-/*
- * TODO: Write code for part1.
- * Notice: You need to implement the project structure yourself.
- */
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Song badRomance = new Song("bad romance", "ra ra ooh la la");
+            Song[] gagaSongs = new Song[] { badRomance };
+            Singer gaga = new Singer("lady gaga", gagaSongs);
+            Song hurt = new Song("hurt", "Ooh, ooh");
+            Song[] christinaSongs = new Song[] { hurt };
+            Singer christina = new Singer("Christina", christinaSongs);
+            Judge simon = new Judge("Simon");
+            Singer[] singers = { christina, gaga };
+            Singer winner = simon.ChooseWinner(singers);
+            simon.AnnounceWinner(winner);
+            
+        }
+    }
+}
