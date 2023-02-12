@@ -5,6 +5,7 @@
 * Notice: You need to implement the project structure yourself.
 */
 using System;
+
 class Program
 {
     public static void Main(string[] args)
