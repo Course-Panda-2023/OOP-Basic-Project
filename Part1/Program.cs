@@ -5,17 +5,18 @@
     {
         static void Main(string[] args)
         {
+            Main1();
+        }
+        
+        static void Main1()
+        {
             Song badRomance = new Song("bad romance", "ra ra ooh la la");
-            Song[] gagaSongs = new Song[] { badRomance };
-            Singer gaga = new Singer("lady gaga", gagaSongs);
+            Singer gaga = new Singer("lady gaga", badRomance);
             Song hurt = new Song("hurt", "Ooh, ooh");
-            Song[] christinaSongs = new Song[] { hurt };
-            Singer christina = new Singer("Christina", christinaSongs);
+            Singer christina = new Singer("Christina", hurt);
             Judge simon = new Judge("Simon");
-            Singer[] singers = { christina, gaga };
-            Singer winner = simon.ChooseWinner(singers);
-            simon.AnnounceWinner(winner);
-            
+            simon.Duel(christina, gaga);
+            Console.ReadLine();
         }
     }
 }

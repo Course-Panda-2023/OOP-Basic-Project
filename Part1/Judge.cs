@@ -29,8 +29,15 @@ namespace MySingingContest
             string announcment = $"{this.name}: Who should I choose? \n";
             announcment += $"{this.name}: The winner is {winner.GetName()}!";
             Console.WriteLine(announcment);
-            Console.ReadLine();
-        }
 
+        }
+        public Singer Duel(Singer singer1, Singer singer2)
+        {
+            Singer[] singers = { singer1, singer2 };
+            Singer winner = this.ChooseWinner(singers);
+            this.AnnounceWinner(winner);
+            return winner;
+        }
+        
     }
 }

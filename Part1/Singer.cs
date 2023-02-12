@@ -13,8 +13,8 @@
         public Singer(string name, Song song)
         {
             this.name = name;
-            this.songs = new Song[0];
-            this.songs.Append(song).ToArray();
+            this.songs = new Song[1];
+            this.songs[0] = song;
         }
         public Singer(string name, Song[] songs)
         {
