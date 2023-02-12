@@ -87,10 +87,39 @@ class Judge
 
     }
 
+    public Singer CalcWinner(int crowd, List<Singer> tie,int numOfWinners)
+    {
+        if (numOfWinners == 1)
+        {
+            return tie[0];
+        }
+        int[] count = new int[tie.Count];
+        numOfWinners = 0;
+
+        for (int i = 0; i < crowd; i++)
+        {
+            int randVote = new Random().Next(0, tie.Count);
+            count[randVote] += 1;
+        }
+        List<Singer> newTie = new List<Singer>();
+        int max = count.Max();
+        for (int i = 0; i < count.Length; i++)
+            if (count[i] == max)
+            {
+                numOfWinners++;
+                newTie.Add(tie[i]);
+            }
+        return CalcWinner(crowd, newTie, numOfWinners);
+    }
+
+        
+
+
     
     public void CrowdsChoice(int crowd, Singer[] singers)
     {
        int[] count = new int[crowd];
+       List<Singer> tie = new List<Singer>();
        foreach (Singer singer in singers)
         {
             //My program already picks the random song out of 3 in the constructor phase but i just wanted to show that the random song can be picked at the competition stage as well
@@ -102,27 +131,14 @@ class Judge
         }
 
         Console.WriteLine("now for the crowd votes!");
-        int numOfWinners = 0;
-        do
+        for (int i = 0; i < singers.Length; i++)
         {
-            numOfWinners = 0;
-            for (int i = 0; i < crowd; i++)
-            {
-                int randVote = new Random().Next(0, singers.Length);
-                count[randVote] += 1;
-            }
-            int max = count.Max();
-            for (int  i= 0; i < crowd; i++)
-            {
-                if (count[i] == max)
-                {
-                    numOfWinners++;
-                }
-            }
+            tie.Add(singers[i]);
         }
-        while (numOfWinners!=1);
-        int maxValue = count.Max();
-        Console.WriteLine($"The winner is... {singers[count.ToList().IndexOf(maxValue)].Name}, with {maxValue} votes, out of {crowd}!!!");
 
+
+        Singer winner = CalcWinner(crowd,tie,0);
+        //Console.WriteLine($"The winner is... {singers[count.ToList().IndexOf(maxValue)].Name}, with {maxValue} votes, out of {crowd}!!!");
+        Console.WriteLine($"The winner is... {winner.Name}!!!");
     }
 }
