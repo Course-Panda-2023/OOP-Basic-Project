@@ -15,16 +15,19 @@ Contestent rihana = new Contestent(53132332, "Rihana", 1.60, false, true);
 Contestent beyonce = new Contestent(132333522, "Beyonce", 1.70, false, true);
 Contestent justin = new Contestent(132331252, "Justin Biber", 1.72, false, true);
 
-Song song1 = new Song("SpongeBob", "Who lives in a pineapple under the sea???");
+Song song1 = new Song("The Best Day Ever", "Mr. Sun came up and he smiled at me\r\nSaid it's gonna be a good one just wait and see\r\nJumped outta bed, and I ran outside\r\nFeeling so extra ecstatified\r\nIt's the best day ever (best day ever)\r\nIt's the best day ever (best day ever)");
 Song song2 = new Song("Mundial WakaWaka", "Tsamina mina, eh, eh\r\nWaka waka, eh, eh\r\nTsamina mina zangalewa, anawa-a-a\r\n");
-Song song3 = new Song("Ad Matai","Ad Matai Kama odddddddddddddddddddddddddddd");
-Song song4 = new Song("Kelev Yam", "Kelem Yam, Kelev Yam, Kelev Yam, Kelev Yam");
-Song song5 = new Song("Finias and Ferb", "Finding a dodo bird\r\nPainting a continent\r\nOr driving our sister insane\r\nAs you can see\r\nThere's a whole lot of stuff to do\r\nBefore school starts this fall\r\nPhineas: Come on Perry!\r\nSo stick with us\r\n'Cause Phineas and Ferb are gonna do it all!\r\nSo stick with us\r\n'Cause Phineas and Ferb are gonna do it all!");
-Song song6 = new Song("The Best Day Ever", "Mr. Sun came up and he smiled at me\r\nSaid it's gonna be a good one just wait and see\r\nJumped outta bed, and I ran outside\r\nFeeling so extra ecstatified\r\nIt's the best day ever (best day ever)\r\nIt's the best day ever (best day ever)");
+Song song3 = new Song("Finias and Ferb", "Finding a dodo bird\r\nPainting a continent\r\nOr driving our sister insane\r\nAs you can see\r\nThere's a whole lot of stuff to do\r\nBefore school starts this fall\r\nPhineas: Come on Perry!\r\nSo stick with us\r\n'Cause Phineas and Ferb are gonna do it all!\r\nSo stick with us\r\n'Cause Phineas and Ferb are gonna do it all!");
 
 List<Contestent> contestentsList = ContestManager.ConvertToContestentList(madona, britney, shakira, adele, abril, nikki, kesha, kelly, 
     kaity, rihana, beyonce, justin);
 
-Contestent winner = ContestManager.RunContest(contestentsList, simon, song1, song2, song3, song4, song5, song6);
+Contestent winner = ContestManager.RunContestWithAudience(contestentsList, 5000, song1, song2, song3);
 
-Console.WriteLine($"ladies, gentelman and basketballs, Winner of the voice is {winner.Name}!!!");
+Console.WriteLine($"ladies, gentelman and basketballs, the winner, with {winner.Votes} votes, of the voice is {winner.Name}!!!");
+Console.WriteLine();
+
+foreach (Contestent contestent in contestentsList)
+{
+    Console.WriteLine($"{contestent.Name}, finished with {contestent.Votes} votes!");
+}

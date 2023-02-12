@@ -9,15 +9,51 @@ namespace Part2
 {
     public abstract class ContestManager
     {
-        public static Contestent RunContest(List<Contestent> contestentList, Judge judge, params Song[] songs)
+        public static Contestent RunContestWithJudge(List<Contestent> contestentList, Judge judge, params Song[] songs)
         {
             if (contestentList.Count == 1)
             {
                 return contestentList[0];
             } else
             {
-                return RunContest(GenerateNextRound(contestentList, judge, songs),judge, songs);
+                return RunContestWithJudge(GenerateNextRound(contestentList, judge, songs),judge, songs);
             }
+        }
+
+        public static int RandomContestentIndex(int numOfContestents)
+        {
+            Random rnd = new Random();
+            return rnd.Next(numOfContestents);
+        }
+
+        public static Contestent RunContestWithAudience(List<Contestent> contestentList, int audienceAmount, params Song[] songs)
+        {
+            int currVotes = 0;
+            foreach (Contestent contestent in contestentList)
+            {
+                contestent.Sing(SelectRandomSong(songs));
+                contestent.Votes = currVotes;
+            }
+
+            for (int audienceIndex = 0; audienceIndex < audienceAmount; audienceIndex++)
+            {
+                int contestedIndex = RandomContestentIndex(contestentList.Count);
+                contestentList[contestedIndex].Votes = contestentList[contestedIndex].Votes + 1;
+            }
+            return FindWinner(contestentList);
+        }
+
+        public static Contestent FindWinner(List<Contestent> contestentsList)
+        {
+            Contestent winner = contestentsList[0];
+            foreach (Contestent contestent in contestentsList)
+            {
+                if (contestent.Votes > winner.Votes)
+                {
+                    winner = contestent;
+                }
+            }
+            return winner;
         }
         public static List<Contestent> GenerateNextRound(List<Contestent> contestentList, Judge judge, params Song[] songs)
         {

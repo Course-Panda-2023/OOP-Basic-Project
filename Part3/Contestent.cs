@@ -16,11 +16,13 @@ namespace Part1
             ContestentCounter++;
             DoesPlay = doesPlay;
             DoesWrite = doesWrite;
+            Votes = 0;
         }
 
         private int ContestentId { get; set; }
         private bool DoesPlay { get; set; }
         private bool DoesWrite { get; set; }
+        public int Votes { get; set; }
 
         public void Sing(Song song)
         {
