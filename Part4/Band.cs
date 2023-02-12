@@ -1,9 +1,11 @@
 ﻿using System;
 class Band : Member
 {
+	private string mBandName;
 	private Singer[] mSingers;
 	public Singer[] Singers { get { return mSingers; }}
-	public Band(Singer[] singers, string song)
+	public string BandName { get { return mBandName; }}
+	public Band(Singer[] singers, string song, string bandName)
 	{
 		//mSingers=new Singer[singers.Length];
 		mSingers= singers;
@@ -11,11 +13,12 @@ class Band : Member
 		{
 			singer.Song = song;
 		}
+		mBandName= bandName;
 	}
 
     public void Performance()
     {
-		Console.WriteLine("*together in harmony:*");
+		Console.WriteLine($"*together in harmony:*\n{mBandName}:");
 		foreach(Singer singer in mSingers)
 		{
             Console.WriteLine($"{singer.Name}: {singer.Song}");
