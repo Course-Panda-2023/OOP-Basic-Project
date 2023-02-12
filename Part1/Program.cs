@@ -100,7 +100,7 @@ public class Program
                 {
                     Singer singer1 = (Singer)tournamentCopy.getSingers()[i];
                     Singer singer2 = (Singer)tournamentCopy.getSingers()[i + 1];
-                    Console.WriteLine($"Match {i / 2 + 1}: {singer1.Name} vs. {singer2.Name}");
+                    Console.WriteLine($"Match {i + 1}: {singer1.Name} vs. {singer2.Name}");
                     SingingContest duel = new SingingContest(new List<Person> { singer1, singer2 });
                     duel.everyoneSing();
                     Singer winner = j.ChooseWinner(duel);
