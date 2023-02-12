@@ -102,11 +102,25 @@ class Judge
         }
 
         Console.WriteLine("now for the crowd votes!");
-        for (int i=0; i<crowd; i++)
+        int numOfWinners = 0;
+        do
         {
-            int randVote = new Random().Next(0, singers.Length);
-            count[randVote] += 1;
+            numOfWinners = 0;
+            for (int i = 0; i < crowd; i++)
+            {
+                int randVote = new Random().Next(0, singers.Length);
+                count[randVote] += 1;
+            }
+            int max = count.Max();
+            for (int  i= 0; i < crowd; i++)
+            {
+                if (count[i] == max)
+                {
+                    numOfWinners++;
+                }
+            }
         }
+        while (numOfWinners!=1);
         int maxValue = count.Max();
         Console.WriteLine($"The winner is... {singers[count.ToList().IndexOf(maxValue)].Name}, with {maxValue} votes, out of {crowd}!!!");
 
