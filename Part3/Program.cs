@@ -17,25 +17,25 @@ songs.Add(song2);
 songs.Add(song3);
 
 
-Singer christinaAguilera = new Singer("Christina Aguilera", songs);
-Singer ladyGaga = new Singer("Lady Gaga", songs);
-Singer madonna = new Singer("Madonna", songs);
-Singer kesha = new Singer("Kesha", songs);
-Singer kellyClarkson = new Singer("Kelly Clarkson", songs);
-Singer shakira = new Singer("Shakira", songs);
-Singer katyPerry = new Singer("Katy Perry", songs);
-Singer adele = new Singer("Adele", songs);
-Singer rihanna = new Singer("Rihanna", songs);
-Singer britneySpears = new Singer("Britney Spears", songs);
-Singer avrilLavigne = new Singer("Avril Lavigne", songs);
-Singer beyonce = new Singer("Beyoncé", songs);
-Singer nickiMinaj = new Singer("Nicki Minaj", songs);
-Singer justinBieber = new Singer("Justin Bieber", songs);
+Singer christinaAguilera = new Singer("Christina Aguilera");
+Singer ladyGaga = new Singer("Lady Gaga");
+Singer madonna = new Singer("Madonna");
+Singer kesha = new Singer("Kesha");
+Singer kellyClarkson = new Singer("Kelly Clarkson");
+Singer shakira = new Singer("Shakira");
+Singer katyPerry = new Singer("Katy Perry");
+Singer adele = new Singer("Adele");
+Singer rihanna = new Singer("Rihanna");
+Singer britneySpears = new Singer("Britney Spears");
+Singer avrilLavigne = new Singer("Avril Lavigne");
+Singer beyonce = new Singer("Beyoncé");
+Singer nickiMinaj = new Singer("Nicki Minaj");
+Singer justinBieber = new Singer("Justin Bieber");
 
 
 Judge simonCowell = new Judge("Simon Cowell", 301);
 
-Contest theVoice = new Contest(simonCowell, christinaAguilera, ladyGaga, madonna, kesha, britneySpears, kellyClarkson, shakira,
-    katyPerry, adele, rihanna, avrilLavigne, beyonce, nickiMinaj, justinBieber);
+Contest theVoice = new Contest(simonCowell, songs, christinaAguilera, ladyGaga, madonna, kesha, britneySpears,
+    kellyClarkson, shakira, katyPerry, adele, rihanna, avrilLavigne, beyonce, nickiMinaj, justinBieber);
 
 theVoice.AllRounds();

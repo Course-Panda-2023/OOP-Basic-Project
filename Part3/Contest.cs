@@ -13,8 +13,9 @@ namespace Part3
         private Judge judge;
         private List<Singer> winners;
         private int roundNum;
+        private List<Song> songs;
 
-        public Contest(Judge judge, params Singer[] singers) 
+        public Contest(Judge judge, List<Song> songList, params Singer[] singers) 
         {
             this.judge = judge;
             contestants = new List<Singer>();
@@ -24,14 +25,21 @@ namespace Part3
             }
             roundNum = 1;
             winners = new List<Singer>();
+            songs = new List<Song>();
+            foreach(Song s in songList)
+            {
+                songs.Add(s);
+            }
         }
 
         public void Dual(Singer singer1, Singer singer2)
         {
-            singer1.Sing();
+            var rand = new Random();
+            singer1.Sing(songs[rand.Next(0, songs.Count)]);
             Console.WriteLine();
-            singer2.Sing();
+            singer2.Sing(songs[rand.Next(0, songs.Count)]);
             Console.WriteLine();
+
             Singer winner = judge.Judging(singer1, singer2);
             winners.Add(winner);
             contestants.Remove(singer1);

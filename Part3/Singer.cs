@@ -9,18 +9,15 @@ namespace Part3
     public class Singer
     {
         private string name;
-        private Song song;
 
         public string Name { get { return name; } }
 
-        public Singer (string name, List<Song> songs)
+        public Singer (string name)
         {
             this.name = name;
-            var rand = new Random();
-            song = songs[rand.Next(0, songs.Count)];
         }
 
-        public void Sing()
+        public void Sing(Song song)
         {
             Console.WriteLine($"{name} started singing {song.songName}");
             Console.WriteLine(song.songLyrics);
