@@ -32,10 +32,9 @@ Singer beyonce = new Singer("Beyoncé");
 Singer nickiMinaj = new Singer("Nicki Minaj");
 Singer justinBieber = new Singer("Justin Bieber");
 
+Judge simonCowell = new Judge("Simon Cowell");
 
-Judge simonCowell = new Judge("Simon Cowell", 301);
-
-Contest theVoice = new Contest(simonCowell, songs, christinaAguilera, ladyGaga, madonna, kesha, britneySpears,
+Contest theVoice = new Contest(simonCowell, songs, 100, christinaAguilera, ladyGaga, madonna, kesha, britneySpears,
     kellyClarkson, shakira, katyPerry, adele, rihanna, avrilLavigne, beyonce, nickiMinaj, justinBieber);
 
-theVoice.AllRounds();
+theVoice.Competition();

@@ -9,34 +9,23 @@ namespace Part3
     public class Judge
     {
         private string name;
-        private int amountOfPeopleInTheAudience;
 
-        public Judge(string name, int amountOfPeopleInTheAudience)
+        public Judge(string name)
         {
             this.name = name;
-            this.amountOfPeopleInTheAudience = amountOfPeopleInTheAudience;
         }
 
         public Singer Judging(params Singer[] singers)
         {
+            Console.WriteLine($"{name} will now be judging.");
             var rand = new Random();
-            int sum = amountOfPeopleInTheAudience / 2;
+            int index = rand.Next(0, singers.Length);
 
-            if (amountOfPeopleInTheAudience <= 0)
-                amountOfPeopleInTheAudience = 1;
-
-            while(sum == amountOfPeopleInTheAudience / 2)
-            {
-                sum = 0;
-                for (int i = 0; i < amountOfPeopleInTheAudience; i++)
-                    sum += rand.Next(0, 2);
-            }
-
-            Singer winner = sum > amountOfPeopleInTheAudience / 2 ? singers[0] : singers[1];
+            string winner = singers[index].Name;
             Console.WriteLine("The winner of the singing contest is...");
-            Console.WriteLine(winner.Name);
+            Console.WriteLine(winner);
             Console.WriteLine();
-            return winner;
+            return singers[index];
         }
     }
 }

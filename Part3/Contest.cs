@@ -10,12 +10,14 @@ namespace Part3
     public class Contest
     {
         private List<Singer> contestants;
-        private Judge judge;
         private List<Singer> winners;
+        private Judge judge;
         private int roundNum;
         private List<Song> songs;
+        private int amountOfPeopleInTheAudience;
 
-        public Contest(Judge judge, List<Song> songList, params Singer[] singers) 
+
+        public Contest(Judge judge, List<Song> songList, int amountOfPeopleInTheAudience, params Singer[] singers)
         {
             this.judge = judge;
             contestants = new List<Singer>();
@@ -26,60 +28,67 @@ namespace Part3
             roundNum = 1;
             winners = new List<Singer>();
             songs = new List<Song>();
-            foreach(Song s in songList)
+            foreach (Song s in songList)
             {
                 songs.Add(s);
             }
+            this.amountOfPeopleInTheAudience = amountOfPeopleInTheAudience;
         }
 
-        public void Dual(Singer singer1, Singer singer2)
+        public Singer Competition()
         {
             var rand = new Random();
-            singer1.Sing(songs[rand.Next(0, songs.Count)]);
-            Console.WriteLine();
-            singer2.Sing(songs[rand.Next(0, songs.Count)]);
-            Console.WriteLine();
+            // singers are singing.
+            foreach (Singer singer in contestants)
+            {
+                singer.Sing(songs[rand.Next(0, songs.Count)]);
+                Console.WriteLine();
+            }
 
-            Singer winner = judge.Judging(singer1, singer2);
-            winners.Add(winner);
-            contestants.Remove(singer1);
-            contestants.Remove(singer2);
+            // audience voting
+            Console.WriteLine("The audience is voting.");
+
+            List<int> votes = new List<int>(new int[contestants.Count]);
+
+            for (int i = 0; i < amountOfPeopleInTheAudience; i++)
+            {
+                int index = rand.Next(0, contestants.Count);
+                votes[index]++;
+            }
+            int place = GetIndexOfFinalWinner(votes);
+            Console.WriteLine(contestants[place].Name);
+            return contestants[place];
         }
 
-        public List<Singer> Rounds()
+        public int GetIndexOfFinalWinner(List<int> votes)
         {
-            Console.WriteLine("---------------------------------------------------------------");
-            Console.WriteLine($"Starting round {roundNum}.");
-            roundNum++;
-            while (contestants.Count > 1)
-            {
-                var rand = new Random();
-                int index2 = -1;
-                int index1 = rand.Next(0, contestants.Count);
-                int temp = rand.Next(0, contestants.Count);
-                
-                if (temp != index1)
-                    index2 = temp;
+            var rand = new Random();
+            int maxVotes = votes.Max();
+            List<int> equalVotes = new List<int>();
+            equalVotes = CheckMax(maxVotes, votes);
 
-                if(index2 != -1)
-                    Dual(contestants[index1], contestants[index2]);
+            while (equalVotes.Count != 1)
+            {
+                for (int i = 0; i < amountOfPeopleInTheAudience; i++)
+                {
+                    int index = rand.Next(0, equalVotes.Count);
+                    votes[equalVotes[index]]++;
+                }
+                maxVotes = votes.Max();
+                equalVotes = CheckMax(maxVotes, votes);
             }
-            foreach (Singer singer in winners)
-                contestants.Add(singer);
-            
-            winners.Clear();
-            return contestants;
+            return equalVotes[0];
         }
 
-        public Singer AllRounds()
+        public List<int> CheckMax(int max, List<int> votes)
         {
-            Console.WriteLine("Starting Competition");
-            List<Singer> singers = Rounds();
-            while(singers.Count > 1)
+            List<int> res = new List<int>();
+            for (int i = 0; i < contestants.Count; i++)
             {
-                singers = Rounds();
+                if (votes[i] == max)
+                    res.Add(i);
             }
-            return singers[0];
+            return res;
         }
     }
 }
