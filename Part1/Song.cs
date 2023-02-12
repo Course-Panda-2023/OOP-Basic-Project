@@ -4,26 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_Advanced_local
+namespace OOPBasicProject
+
 {
-    class Song {
-        /*public string Name { get; set; }
-        public string Artist { get; set; }
-        public string Duration { get; set; }
-        public Song(string name, string artist, string duration)
-        {
-            Name = name;
-            Artist = artist;
-            Duration = duration;
-        }*/
+    class Song
+    {
+
         private string _name;
-        private string _artist;
+        private string _author;
         private string _duration;
         private string _releaseYear;
         public Song(string name, string artist, string duration, string releaseYear)
         {
             _name = name;
-            _artist = artist;
+            _author = artist;
             _duration = duration;
             _releaseYear = releaseYear;
         }
@@ -34,8 +28,8 @@ namespace OOP_Advanced_local
         }
         public string Artist
         {
-            get { return _artist; }
-            set { _artist = value; }
+            get { return _author; }
+            set { _author = value; }
         }
         public string Duration
         {
@@ -46,6 +40,10 @@ namespace OOP_Advanced_local
         {
             get { return _releaseYear; }
             set { _releaseYear = value; }
+        }
+        public override string ToString()
+        {
+            return string.Format("Song name: {0}, Artist: {1}, Duration: {2}, Release year: {3}", _name, _author, _duration, _releaseYear);
         }
     }
 }

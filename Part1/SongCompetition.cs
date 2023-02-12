@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_Advanced_local
+namespace OOPBasicProject
 {
-    internal class Competition
+    class SongCompetition
     {
+        private List<People> _competitionPeople = new List<People>();
+        private People _winner;
+        
     }
 }

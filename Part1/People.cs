@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_Advanced_local
-{
-    
+namespace OOPBasicProject
+{    
     abstract class People
     {        
         private string _name;
-        private string _age;
+        private int _age;
         private string _city;
         private string _country;
-        public People(string name, string age, string city, string country)
+        
+        public People(string name, int age, string city, string country)
         {
             _name = name;
             _age = age;
@@ -25,7 +25,7 @@ namespace OOP_Advanced_local
             get { return _name; }
             set { _name = value; }
         }
-        public string Age
+        public int Age
         {
             get { return _age; }
             set { _age = value; }
@@ -39,6 +39,10 @@ namespace OOP_Advanced_local
         {
             get { return _country; }
             set { _country = value; }
+        }
+        public virtual string ToString()
+        {
+            return string.Format("Name: {0}, Age: {1}, City: {2}, Country: {3}", _name, _age, _city, _country);
         }
     }
 }

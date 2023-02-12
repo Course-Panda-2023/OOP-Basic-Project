@@ -4,20 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_Advanced_local
+namespace OOPBasicProject
 {
-   class Singers : People
+   class Singer : People
     {
         private string _singerName;
-        private string _singerAge;
+        private int _singerAge;
         private string _singerCity;
         private string _singerCountry;
         /*private string _singerSong;
         private string _singerSongDuration;
         private string _singerSongReleaseYear;*/
         private Song _singerSong;
-        
-        public Singers(string name, string age, string city, string country, Song song) : base(name, age, city, country)
+        //public Singer() { }
+        public Singer(string name, int age, string city, string country) : base(name, age, city, country)
+        {
+            _singerName = name;
+            _singerAge = age;
+            _singerCity = city;
+            _singerCountry = country;            
+        }
+        public Singer(string name, int age, string city, string country, Song song) : base(name, age, city, country)
         {
             _singerName = name;
             _singerAge = age;
@@ -30,7 +37,7 @@ namespace OOP_Advanced_local
             get { return _singerName; }
             set { _singerName = value; }
         }
-        public string SingerAge
+        public int SingerAge
         {
             get { return _singerAge; }
             set { _singerAge = value; }
@@ -50,6 +57,15 @@ namespace OOP_Advanced_local
             get { return _singerSong; }
             set { _singerSong = value; }
         }
-        
+        public void SelectRandomSongFromList(List<Song> songList)
+        {
+            Random random = new Random();
+            int randomSongIndex = random.Next(0, songList.Count);
+            _singerSong = songList[randomSongIndex];
+        }
+        public override string ToString()
+        {
+            return string.Format("Name: {0}, Age: {1}, City: {2}, Country: {3}, Song: {4}", _singerName, _singerAge, _singerCity, _singerCountry, _singerSong);
+        }
     }
 }
