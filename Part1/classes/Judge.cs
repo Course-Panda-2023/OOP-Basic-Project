@@ -2,14 +2,14 @@
 public class Judge: Member{
     
     public Judge(MemberName name): base(name) {
-        if (((MemberType)name) != MemberType.Judge){
+        if (Metadata.MemberNameToType[name] != MemberType.Judge){
             throw new Exception($"{name} is not a judge");
         }
     }
 
     public void StartCompetition(Singer[] Singers){
-        Console.WriteLine("Welcome, ladys and gentelmens, to the most amazing competition that ever took place on earth!");
-        Console.WriteLine($"Tonight, I {this.name}, am going to be the judge.");
+        Console.WriteLine("Welcome, ladys and gentelmen, to the amazinest competition that ever took place on earth!");
+        Console.WriteLine($"Tonight, I {this.name}, am going to be your judge.");
 
         string[] lyricses = new string[Singers.Length];
         int i = 0;
