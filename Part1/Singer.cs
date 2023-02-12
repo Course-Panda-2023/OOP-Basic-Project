@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace OOPprojectS
 {
-    class Singer
+    public class Singer
     {
-        string name;
+        private string name;
         List<Song> songList = new List<Song>();
 
         public Singer(string name, List<Song> songList)
@@ -34,10 +34,28 @@ namespace OOPprojectS
             }
         }
 
+        public Song chooseSongFromList(List<Song> songsList){
+            if (songsList.Count == 0){
+                return new Song("", "");
+            }
+            Random rnd = new Random();
+            int indexOfSong = rnd.Next(0, songList.Count);
+            Console.WriteLine("The singer " + this.getName() + " chose " + songsList.ElementAt(indexOfSong) + " from the list:");
+            foreach (Song s in songsList){
+                Console.WriteLine((s.getName()));
+            }
+            return songsList.ElementAt(indexOfSong);
+        }
+
         public void Sing()
         {
             Console.WriteLine("Now " + this.name + " sings:");
             Console.WriteLine(this.getRandomSongInList().getSong());
+        }
+
+        public void singFromList(List<Song> songsList){
+            Console.WriteLine("Now " + this.name + " sings:");
+            Console.WriteLine(this.chooseSongFromList(songsList).getSong());
         }
     }
 }

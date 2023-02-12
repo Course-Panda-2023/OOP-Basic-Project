@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace OOPprojectS
 {
-    class Song
+    public class Song
     {
-        string songString;
-        string name;
+        private string songString;
+        private string name;
 
         public Song(string name, string songString)
         {

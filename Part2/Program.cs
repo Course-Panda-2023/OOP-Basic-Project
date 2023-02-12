@@ -1,8 +1,10 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace OOPprojectS
 {
@@ -11,8 +13,12 @@ namespace OOPprojectS
         static void Main(string[] args)
         {
             Song babyBaby = new Song("baby baby", "BABY BABY BABY OHHHHHH");
+            Song lalala = new Song ("la", "LALALALALALALALALALALALALALA");
+            Song dontStopMeNow = new Song("dont stop me now", "dont stop me now, cause im having a good time, having a good time,...");
             List<Song> songs = new List<Song>();
             songs.Add(babyBaby);
+            songs.Add(lalala);
+            songs.Add(dontStopMeNow);
             Singer ladyGaga = new Singer("Lady Gaga", songs);
             Singer christinaAglira = new Singer("Christina Algira", songs);
             Singer madona = new Singer("Madona", songs);
@@ -43,7 +49,8 @@ namespace OOPprojectS
             singersList.Add(rhihanna);
             singersList.Add(beyonce);
             singersList.Add(justinBieber);
-            Contest contest = new Contest(singersList, symonKavel);
+            //ContestWithJudge contest = new ContestWithJudge(singersList, symonKavel);
+            ContestWithAudience contest = new ContestWithAudience(singersList, songs);
             contest.performContest();
             //symonKavel.contest(ladyGaga, christinaAglira);
         }
