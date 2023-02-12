@@ -91,7 +91,7 @@ list<singer> singers1 = new list<singer>()
     Beyonce,
     JustinBieber
 };
-//simoncowell.managecompetition(singers1);
+simoncowell.managecompetition(singers1);
 
 
 
