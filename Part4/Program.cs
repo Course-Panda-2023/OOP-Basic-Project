@@ -52,9 +52,10 @@ Singer two = new Singer("second");
 Singer three = new Singer("third");
 
 Singer[] singersInABand = { one, two, three };
-Band band1 = new Band(singersInABand,"thats what makes you beautiful","one direction");
-band1.Performance();
+Band onedirection = new Band(singersInABand,"thats what makes you beautiful","one direction");
+
+Member[] members = { ladyGaga, christina, nickiminaj, onedirection };
 
 Singer[] singers = { ladyGaga, christina, nickiminaj, madonna, britenyspears, shakira, adele, nickiminaj, kesha, kellyclarkson, katyperry, rihanna, beyonce, justinbieber, avrillavine };
-//simonCowell.CrowdsChoice(561,singers);
+simonCowell.CrowdsChoice(561,members);
 Console.ReadLine();

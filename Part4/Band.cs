@@ -2,6 +2,11 @@
 class Band : Member
 {
 	private string mBandName;
+	public string Name
+	{
+		get { return mBandName; }
+		set { mBandName = value; }
+	}
 	private Singer[] mSingers;
 	public Singer[] Singers { get { return mSingers; }}
 	public string BandName { get { return mBandName; }}

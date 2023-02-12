@@ -87,7 +87,7 @@ class Judge
 
     }
 
-    public Singer CalcWinner(int crowd, List<Singer> tie,int numOfWinners)
+    public Member CalcWinner(int crowd, List<Member> tie,int numOfWinners)
     {
         if (numOfWinners == 1)
         {
@@ -101,7 +101,7 @@ class Judge
             int randVote = new Random().Next(0, tie.Count);
             count[randVote] += 1;
         }
-        List<Singer> newTie = new List<Singer>();
+        List<Member> newTie = new List<Member>();
         int max = count.Max();
         for (int i = 0; i < count.Length; i++)
             if (count[i] == max)
@@ -116,18 +116,18 @@ class Judge
 
 
     
-    public void CrowdsChoice(int crowd, Singer[] singers)
+    public void CrowdsChoice(int crowd, Member[] singers)
     {
        int[] count = new int[crowd];
-       List<Singer> tie = new List<Singer>();
-       foreach (Singer singer in singers)
+       List<Member> tie = new List<Member>();
+       foreach (Member m in singers)
         {
             //My program already picks the random song out of 3 in the constructor phase but i just wanted to show that the random song can be picked at the competition stage as well
             /*
             int randIndex = new Random().Next(0, singer.songList.Length); //randomly picks a song out of 3 songs to sing at the contest!
             Console.WriteLine($"{singer.Name}: {singer.songList[randIndex]}");
             */
-            Console.WriteLine($"{singer.Name}: {singer.Song}");
+            m.Performance();
         }
 
         Console.WriteLine("now for the crowd votes!");
@@ -137,8 +137,12 @@ class Judge
         }
 
 
-        Singer winner = CalcWinner(crowd,tie,0);
+        Member winner = CalcWinner(crowd,tie,0);
         //Console.WriteLine($"The winner is... {singers[count.ToList().IndexOf(maxValue)].Name}, with {maxValue} votes, out of {crowd}!!!");
         Console.WriteLine($"The winner is... {winner.Name}!!!");
     }
+
+
+
+
 }
