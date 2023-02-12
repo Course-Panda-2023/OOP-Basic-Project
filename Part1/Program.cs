@@ -146,9 +146,6 @@ public class Program
         contest.addSinger(new Singer("katy perry"));
         contest.addSinger(new Singer("rihana"));
         contest.addSinger(new Singer("beyonce"));
-        //contest.addSinger(new Singer("justin bieber"));
-        //contest.everyoneSing();
-        //j.ChooseWinner(contest);
         Tournament(contest, j);
     }
 }
