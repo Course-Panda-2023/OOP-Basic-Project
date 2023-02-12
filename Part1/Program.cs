@@ -125,6 +125,86 @@ public class Program
                     tournamentCopy.addSinger(s);
                 }
                 round++;
+                Console.WriteLine();
+            }
+            Console.WriteLine($"Final round: {c.getSingers()[0].Name} is the winner!");
+        }
+    }
+
+    public static void CrowdTournament(SingingContest c, Judge j, int MaxVotes)
+    {
+        SingingContest tournamentCopy = c;
+        int round = 1;
+        if (c.getSingers().Count % 2 != 0)
+        {
+            Console.WriteLine("number of singers not even");
+            return;
+        }
+        else
+        {
+            while (tournamentCopy.getSingers().Count != 1)
+            {
+                Console.WriteLine($"Round {round}");
+                List<Person> winners = new List<Person>();
+                int numberOfSingers = c.getSingers().Count;
+                for (int i = 0; i < numberOfSingers; i++)
+                {
+                    Singer singer1 = (Singer)tournamentCopy.getSingers()[i];
+                    Singer singer2 = (Singer)tournamentCopy.getSingers()[i + 1];
+                    int p1votes = 0, p2votes = 0;
+                    Console.WriteLine($"Match {i + 1}: {singer1.Name} vs. {singer2.Name}");
+                    SingingContest duel = new SingingContest(new List<Person> { singer1, singer2 });
+                    duel.everyoneSing();
+                    for (int k = 0; k < MaxVotes; k++)
+                    {
+                        Console.WriteLine($"cast your votes! 1 for {singer1.Name}, 2 for {singer2.Name}");
+                        int choice = int.Parse(Console.ReadLine());
+                        switch (choice)
+                        {
+                            case 1:
+                                p1votes++;
+                                break;
+                            case 2:
+                                p2votes++;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    Singer winner;
+                    if (p1votes > p2votes)
+                    {
+                        winner = singer1;
+                    }
+                    else if (p1votes < p2votes)
+                    {
+                        winner = singer2;
+                    }
+                    else
+                    {
+                        winner = j.ChooseWinner(duel); //winner gets chosen randomly by judge
+                    }
+                    Console.WriteLine($"Winner: {winner.Name}\n");
+                    tournamentCopy.removeSinger(singer1);
+                    tournamentCopy.removeSinger(singer2);
+                    winners.Add(winner);
+                    if (numberOfSingers <= 0)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        numberOfSingers = tournamentCopy.getSingers().Count;
+                    }
+
+                }
+                Console.WriteLine($"all winners of round {round}:");
+                foreach (Singer s in winners)
+                {
+                    Console.WriteLine(s.Name);
+                    tournamentCopy.addSinger(s);
+                }
+                round++;
             }
             Console.WriteLine($"Final round: {c.getSingers()[0].Name} is the winner!");
         }
@@ -146,7 +226,10 @@ public class Program
         contest.addSinger(new Singer("katy perry"));
         contest.addSinger(new Singer("rihana"));
         contest.addSinger(new Singer("beyonce"));
-        Tournament(contest, j);
+        //contest.addSinger(new Singer("justin bieber"));
+        //contest.everyoneSing();
+        //j.ChooseWinner(contest);
+        CrowdTournament(contest, j, 5);
     }
 }
 
