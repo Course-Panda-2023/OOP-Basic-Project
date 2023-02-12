@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOPBasicProject
 {
-   class Singer : People
+   internal class Singer : People
     {
         private string _singerName;
         private int _singerAge;

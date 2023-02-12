@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace OOPBasicProject
 
 {
-    class Song
+    internal class Song
     {
 
         private string _name;

@@ -1,10 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-/*
- * TODO: Write code for part1.
- * Notice: You need to implement the project structure yourself.
- */
+
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using System.Xml.Schema;
 using OOPBasicProject;
 
@@ -20,11 +18,11 @@ List<OOPBasicProject.Jury> juries = new List<OOPBasicProject.Jury>();
 juries.Add(new OOPBasicProject.Jury("Simon Cowell", 63, "London", "UK"));
 //juries.Add(new Jury("Jury 2"));
 
-
-foreach(OOPBasicProject.Singer singer in singers)
-{    
-    singer.SelectRandomSongFromList(CompetitionSongList);   
+foreach (OOPBasicProject.Singer singer in singers)
+{
+    singer.SelectRandomSongFromList(CompetitionSongList);
 }
+//Helper.SelectingSongsBySingers(singers, CompetitionSongList);
 Dictionary<OOPBasicProject.Singer, int> voteCounts = new Dictionary<OOPBasicProject.Singer, int>();
 
 foreach(OOPBasicProject.Jury jury in juries)
