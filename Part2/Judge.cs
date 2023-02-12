@@ -72,10 +72,12 @@ class Judge
             if(first.Name==winner)
             {
                 losers.Add(second);
+                Console.WriteLine($"bye bye to our loser: {second.Name}");
             }
             else
             {
                 losers.Add(first);
+                Console.WriteLine($"bye bye to our loser: {first.Name}");
             }
 
         }
