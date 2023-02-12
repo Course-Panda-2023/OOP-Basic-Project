@@ -9,6 +9,8 @@ class SingingCompetition2 : SingingCompetition
     
     public SingingCompetition2(List<Singer> singers, Judge judge) : base(singers, judge)
     {
+        
+        // TODO
     }
 
     public static List<Tuple<int, int>> IndexPairs(int len)
