@@ -3,6 +3,7 @@
 public interface Member
 {
 	string Name { get; set;  }
-	void Performance();
+    string Song { get; set; }
+    void Performance();
 
 }

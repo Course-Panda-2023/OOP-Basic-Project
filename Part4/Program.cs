@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 
+using Part5;
 using System.Runtime;
 
 string song1 = "ra ra rama ma";
@@ -49,12 +50,16 @@ Singer avrillavine = new Singer("Avril Lavigne", array14);
 
 Singer one = new Singer("first");
 Singer two = new Singer("second");
-Singer three = new Singer("third");
+Guitarist three = new Guitarist("third", "thats what makes you beautiful");
+Drummer fourth = new Drummer("forth", "thats what makes you beautiful");
 
-Singer[] singersInABand = { one, two, three };
+Member[] singersInABand = { one, two, three, fourth };
 Band onedirection = new Band(singersInABand,"thats what makes you beautiful","one direction");
 
-Member[] members = { ladyGaga, christina, nickiminaj, onedirection };
+Member[] singersInABand2 = { one, two, christina, three};
+Band notValidBand = new Band(singersInABand2, "hi im an invalid band", "invalid"); //a band that has only 3 singers to check the program answers the demands
+
+Member[] members = { ladyGaga, christina, nickiminaj, onedirection, notValidBand };
 
 Singer[] singers = { ladyGaga, christina, nickiminaj, madonna, britenyspears, shakira, adele, nickiminaj, kesha, kellyclarkson, katyperry, rihanna, beyonce, justinbieber, avrillavine };
 simonCowell.CrowdsChoice(561,members);
