@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace OOPprojectS
 {
-    public class Singer : Performer
-    {
-        private string name;
-        List<Song> songList = new List<Song>();
+	public abstract class Musician : Performer
+	{
+        public string name;
+        protected List<Song> songList;
 
-        public Singer(string name, List<Song> songList)
+        abstract public string getProffession();
+
+        abstract public void Sing();
+
+        public Musician(string name, List<Song> songList)
         {
             this.name = name;
             List<Song> songListCopy = new List<Song>(songList);
@@ -23,6 +22,9 @@ namespace OOPprojectS
         {
             return this.name;
         }
+
+        abstract public void singFromList(List<Song> songsList);
+
         public Song getRandomSongInList()
         {
             Random r = new Random();
@@ -45,8 +47,8 @@ namespace OOPprojectS
                 return new Song("", "");
             }
             Random rnd = new Random();
-            int indexOfSong = rnd.Next(0, songList.Count - 1);
-            Console.WriteLine("The singer " + this.getName() + " chose " + songsList.ElementAt(indexOfSong).getName() + " from the list:");
+            int indexOfSong = rnd.Next(0, songsList.Count - 1);
+            Console.WriteLine("The " + this.getProffession + " " + this.getName() + " chose " + songsList.ElementAt(indexOfSong).getName() + " from the list:");
             foreach (Song s in songsList)
             {
                 Console.WriteLine((s.getName()));
@@ -54,16 +56,6 @@ namespace OOPprojectS
             return songsList.ElementAt(indexOfSong);
         }
 
-        public void Sing()
-        {
-            Console.WriteLine("Now " + this.name + " sings:");
-            Console.WriteLine(this.getRandomSongInList().getSong());
-        }
-
-        public void singFromList(List<Song> songsList)
-        {
-            Console.WriteLine("Now " + this.name + " sings:");
-            Console.WriteLine(this.chooseSongFromList(songsList).getSong());
-        }
     }
 }
+

@@ -9,15 +9,51 @@ namespace OOPprojectS
     public class ContestWithJudge : Contest
     {
         private Judge judge;
+        private bool areBandsValid;
 
         public ContestWithJudge(List<Performer> performers, Judge judge)
         {
             this.performersList = performers;
             this.judge = judge;
+            bool isThereSinger = false;
+            bool isThereGuitarist = false;
+            bool isThereDrummer = false;
+            this.areBandsValid = true;
+            foreach (Performer p in performers)
+            {
+                if (p is Band)
+                {
+                    foreach (Musician m in ((Band)p).getMusicians())
+                    {
+                        if (m is Singer)
+                        {
+                            isThereSinger = true;
+                        }
+                        if (m is Guitarist)
+                        {
+                            isThereGuitarist = true;
+                        }
+                        if (m is Drummer)
+                        {
+                            isThereDrummer = true;
+                        }
+                    }
+                    if (!(isThereDrummer && isThereGuitarist && isThereSinger))
+                    {
+                        this.areBandsValid = false;
+                    }
+                }
+
+            }
         }
 
         public override void performContest()
         {
+            if (areBandsValid == false)
+            {
+                Console.WriteLine("Invalid bands! cannot perform contest");
+                return;
+            }
             Random rnd = new Random();
             List<Performer> participants = new List<Performer>(this.performersList);
             Console.WriteLine("Performing contest.\nThe judge is " + this.judge.getName() +

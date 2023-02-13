@@ -11,9 +11,6 @@ namespace OOPprojectS
     {
         public List<Performer> performersList;
 
-        public virtual void performContest()
-        {
-
-        }
+        public abstract void performContest();
     }
 }
