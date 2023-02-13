@@ -66,21 +66,6 @@ static void Part2()
 
     List<Tuple<OOPBasicProject.Singer, OOPBasicProject.Singer>> pairs = new List<Tuple<Singer, Singer>>();
 
-    /*for (int i = 0; i < singers.Count; i++)
-    {
-        for (int j = i + 1; j < singers.Count; j++)
-        {
-            pairs.Add(new Tuple<Singer, Singer>(singers[i], singers[j]));
-        }
-    }*/
-
-    /* static void Main(string[] args)
-     {
-         List<string> strings = new List<string> { "A", "B", "C", "D" };
-         HashSet<string> pairs = new HashSet<string>();
-
-         Random rnd = new Random();*/
-
     // Generate random pairs of strings until all unique pairs are generated
     Random rnd = new Random();
     
@@ -102,6 +87,11 @@ static void Part2()
             singersIndexes.Add(j);            
             Console.WriteLine($"{singers[i].ToString()}, {singers[j].ToString()}");           
         }
+    }
+    pairs = Helper.makeRandomPairs(singers);
+    foreach(var pair in pairs)
+    {
+        Console.WriteLine("({0}, {1})", pair.Item1.ToString(), pair.Item2.ToString());
     }
     //Console.WriteLine(pairs.Count());
     /*List<int> numbers = new List<int> { 1, 2, 3, 4 };

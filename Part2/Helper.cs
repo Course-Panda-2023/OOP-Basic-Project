@@ -48,5 +48,21 @@ namespace OOPBasicProject
             }
             return absoluteWinner;
         }
+        public static List<Tuple<OOPBasicProject.Singer, OOPBasicProject.Singer>> makeRandomPairs(List<OOPBasicProject.Singer> singers)
+        {
+            List<Tuple<OOPBasicProject.Singer, OOPBasicProject.Singer>> pairs = new List<Tuple<OOPBasicProject.Singer, OOPBasicProject.Singer>>();
+            Random rnd = new Random();
+            while (singers.Count > 0)
+            {
+                int index = rnd.Next(singers.Count);
+                OOPBasicProject.Singer singer1 = singers[index];
+                singers.RemoveAt(index);
+                index = rnd.Next(singers.Count);
+                OOPBasicProject.Singer singer2 = singers[index];
+                singers.RemoveAt(index);
+                pairs.Add(new Tuple<OOPBasicProject.Singer, OOPBasicProject.Singer>(singer1, singer2));
+            }
+            return pairs;
+        }        
     }
 }
