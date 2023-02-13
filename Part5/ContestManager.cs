@@ -92,6 +92,39 @@ namespace Part5
             return contestents;
         }
 
+        public static List<Singer> ConvertToSingerList(params Singer[] list)
+        {
+            List<Singer> singers = new List<Singer>();
+            foreach (Singer singer in list)
+            {
+                singers.Add(singer);
+            }
+
+            return singers;
+        }
+
+        public static List<Drummer> ConvertToDrummerList(params Drummer[] list)
+        {
+            List<Drummer> drummers = new List<Drummer>();
+            foreach (Drummer drummer in list)
+            {
+                drummers.Add(drummer);
+            }
+
+            return drummers;
+        }
+
+        public static List<Guitarist> ConvertToSingerList(params Guitarist[] list)
+        {
+            List<Guitarist> guitarists = new List<Guitarist>();
+            foreach (Guitarist guitarist in list)
+            {
+                guitarists.Add(guitarist);
+            }
+
+            return guitarists;
+        }
+
         public static Contestent SelectRandomContestent(List<Contestent> contestents)
         {
             Random rnd = new Random();

@@ -27,7 +27,7 @@ namespace Part5
             this.Singers = singers;
             this.Guitarists = guitarists;
             this.Drummers = drummers;
-            MembersAmount = singers.Count()+guitarists.Count()+drummers.Count();
+            MembersAmount = singers.Count() + guitarists.Count() + drummers.Count();
 
         }
 
@@ -39,7 +39,7 @@ namespace Part5
         public override void Sing(Song song)
         {
             Console.WriteLine($"We are {this.BandName} and we will sing {song.SongName}!");
-            foreach( Singer singer in Singers )
+            foreach( Singer singer in Singers)
             {
                 Console.WriteLine($"{singer.Name}: {song.SongWords}");
 
