@@ -1,24 +1,37 @@
 
+using System;
 using System.Threading;
 
 public class Judge: Member{
     
-    public Judge(MemberName name): base(name) {
-        if (Metadata.MemberNameToType[name] != MemberType.Judge){
-            throw new Exception($"{name} is not a judge");
-        }
+    public Judge(string name): base(name) {
+        
     }
 
-    public void StartCompetition(Competitor[] singers, CrowdMember[] crowdMembers){
+    public void StartCompetition(Competitor[] competitors, CrowdMember[] crowdMembers){
+        foreach(Competitor competitor in competitors){
+            if ((! (competitor is Singer)) & (! (competitor is Band))){
+                throw new Exception("Competitors must be from type Singer or Band");
+            }
+        }
+
         Console.WriteLine("Welcome, lady's and gentelmen, to the amazinest competition that ever took place on earth!");
         Console.WriteLine($"Tonight, I {this.name}, am going to be your judge.");
 
-        string[] lyricses = new string[singers.Length];
+        string[] lyricses = new string[competitors.Length];
         int idx = 0;
 
-        foreach(Competitor singer in singers){
-            Console.WriteLine($"{singer.name} it's your turn!");
-            lyricses[idx] = singer.StartSinging();
+        foreach(Competitor competitor in competitors) {
+            Console.WriteLine($"{competitor.name} it's your turn!");
+            if (competitor is Singer){
+                Singer singer = (Singer) competitor;
+                lyricses[idx] = singer.StartSinging();
+            } else {
+                // competitor is of type Band
+                Band band = (Band) competitor;
+                lyricses[idx] = band.StartSinging();
+            }
+            
             idx ++;
         }
 
@@ -28,7 +41,7 @@ public class Judge: Member{
         Console.WriteLine("It's time for you, the crowd, to choose the winner!");
 
         foreach(CrowdMember crowdMember in crowdMembers){
-            choices[idx] = crowdMember.ChooseWinner(singers, lyricses);
+            choices[idx] = crowdMember.ChooseWinner(competitors, lyricses);
             idx ++;
         }
 

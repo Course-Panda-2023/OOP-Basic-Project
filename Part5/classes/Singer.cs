@@ -1,13 +1,13 @@
 
 
-public class Singer: Competitor{
+public class Singer: Musician{
 
-    public Singer(MemberName name): base(name){
+    public Singer(string name): base(name){
 
     }
 
-    public override string StartSinging(){
-        string songName = Metadata.GetRandomSongName(this.name);
+    public string StartSinging(){
+        string songName = Metadata.GetRandomSongName();
         string lyrics = Metadata.Songs[songName];
 
         Console.WriteLine($"Let me, the beatiful singer {this.name} sing the song {songName}");

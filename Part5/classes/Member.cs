@@ -1,8 +1,8 @@
 
 public abstract class Member{
-    public readonly MemberName name;
+    public readonly string name;
 
-    public Member(MemberName name){
+    public Member(string name){
         this.name = name;
     }
 }

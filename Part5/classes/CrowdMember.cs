@@ -6,7 +6,7 @@ public class CrowdMember: Member{
 
     public Competitor ChooseWinner(Competitor[] singers, string[] lyricses){
         Random rnd = new Random();
-        int coin = rnd.Next(0, 2); 
+        int coin = rnd.Next(0, 2);
 
         if (coin == 0){
             // choose winning singer randomly
