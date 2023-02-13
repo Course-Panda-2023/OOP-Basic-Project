@@ -18,7 +18,13 @@ namespace Part5
         {
             BandName= bandName;
             MembersAmount = membersAmount;
+
+            if (singers.Count() < 1)
+            {
+                throw new EmptyBandException("no singers added", bandName);
+            }
             Singers = singers;
+
         }
 
         public Band(string bandName, int membersAmount, bool doesPlay, bool doesWrite,
@@ -27,6 +33,11 @@ namespace Part5
         {
             BandName = bandName;
             MembersAmount = membersAmount;
+
+            if (singers.Count() < 1 || guitarists.Count() < 1 || drummers.Count() < 1 )
+            {
+                throw new EmptyBandException("no singers/guitarists/drummers added", bandName);
+            }
             this.Singers = singers;
             this.Guitarists = guitarists;
             this.Drummers = drummers;
