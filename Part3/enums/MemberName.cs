@@ -1,0 +1,19 @@
+
+public enum MemberName{
+    CHRISTINA_AGUILERA,
+    LADY_GAGA,
+    MEDONA,
+    BRITNEY_SPEARS,
+    SHAKIRA,
+    ADELE,
+    AVRIL_LAVIGNE,
+    NICKI_MINAJ,
+    KESHA, 
+    KELLY_CLARKSON,
+    KATY_PERRY,
+    RIHANA,
+    BEYONCE,
+    JUSTIN_BIEBER,
+
+    SIMON_COWELL
+}
