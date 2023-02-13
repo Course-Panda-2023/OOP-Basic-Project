@@ -1,6 +1,8 @@
 ﻿using ProjectInOOPBasics;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
+AudienceVote audienceVote = new AudienceVote();
 NotHardCodedData notHardCodedData = new NotHardCodedData();
 List<string> idolsNamesACopy = new List<string>();
 var iterator = CollectionsMarshal.AsSpan(notHardCodedData.idolNames);
@@ -28,7 +30,7 @@ while (idolsNamesACopy.Count >= 2)
     idol2.SetName(competitor2);
 
     IIdol newIdol = new Idol(idol1, idol2);
-    newIdol.SetName(newIdol.GetIdols()[rand.Next(0, 2)].GetName());
+    newIdol.SetName(newIdol.GetIdols()[audienceVote.Match()].GetName());
     root.AddOne(newIdol);
     
 
@@ -40,7 +42,7 @@ IIdol RecursivelyBuildABoard(IIdol idol)
 {
     if (idol.Size() <= 2)
     {
-        idol.SetName(idol.GetIdols()[rand.Next(0, 2)].GetName());
+        idol.SetName(idol.GetIdols()[audienceVote.Match()].GetName());
         return idol;
     }
     IIdol root = new Idol();
@@ -52,7 +54,7 @@ IIdol RecursivelyBuildABoard(IIdol idol)
         
         int index1 = rand.Next(idols.Count);
         IIdol idol1 = idols[index1];
-        idol1.SetName(idol1.GetIdols()[rand.Next(0, 2)].GetName());
+        idol1.SetName(idol.GetIdols()[audienceVote.Match()].GetName());
         idols.RemoveAt(index1);
 
         // Randomly select the second competitor

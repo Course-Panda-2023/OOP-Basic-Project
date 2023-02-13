@@ -25,5 +25,14 @@ namespace ProjectInOOPBasics
             "Bio",
             "Justin"
         };
+
+        public readonly List<string> songs = new List<string>()
+        {
+            "Abx",
+            "Blah blah",
+            "Other",
+            "Many",
+            "More"
+        };
     }
 }
