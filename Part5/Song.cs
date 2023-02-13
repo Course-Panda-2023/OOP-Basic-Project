@@ -14,7 +14,7 @@ namespace Part5
         public Song(string songName, string songWords)
         {
             this.SongName = songName;
-            SongWords = songWords;
+            this.SongWords = songWords;
         }
     }
 }

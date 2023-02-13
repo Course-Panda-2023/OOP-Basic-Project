@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Part5
 {
-    public class Singer : Contestent
+    public class Singer : Contestant
     {
         private int PersonId;
         public string Name;

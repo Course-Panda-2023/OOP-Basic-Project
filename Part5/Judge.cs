@@ -22,7 +22,7 @@ namespace Part5
         private int YearsOfExperience;
         private bool IsTough;
 
-        public Contestent ChooseWinner(params Contestent[] contestents)
+        public Contestant ChooseWinner(params Contestant[] contestents)
         {
             Random rnd = new Random();
             int winnerIndex = rnd.Next(contestents.Length);

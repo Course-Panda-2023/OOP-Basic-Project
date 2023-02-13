@@ -33,10 +33,10 @@ Band sumFour = new Band("Sum41", true, true, new List<Singer>() { (Singer)justin
 Band lmfao = new Band("lauging my **** ass off", true, true, new List<Singer>() { (Singer)justin, (Singer)adele },
         new List<Guitarist>() { motiLochim }, new List<Drummer>() { bilHaDebil });
 
-List<Contestent> contestentsList = new List<Contestent>(){madona, britney, shakira, adele, abril, nikki, kesha, kelly,
+List<Contestant> contestentsList = new List<Contestant>(){madona, britney, shakira, adele, abril, nikki, kesha, kelly,
     kaity, rihana, beyonce, justin};
 List<Band> bandList = new List<Band>() { maroon, blink, greenDay, mars, nickelback, sumFour, lmfao};
-List<Band> dupbandList = new List<Band>() { maroon, blink, greenDay, mars, nickelback, sumFour, lmfao};
+List<Band> dupbandList = new List<Band>(bandList);
 
 foreach (Band band in dupbandList)
 {
@@ -57,13 +57,13 @@ Song song2 = new Song("Mundial WakaWaka", "Tsamina mina, eh, eh\r\nWaka waka, eh
 Song song3 = new Song("Finias and Ferb", "Finding a dodo bird\r\nPainting a continent\r\nOr driving our sister insane\r\nAs you can see\r\nThere's a whole lot of stuff to do\r\nBefore school starts this fall\r\nPhineas: Come on Perry!\r\nSo stick with us\r\n'Cause Phineas and Ferb are gonna do it all!\r\nSo stick with us\r\n'Cause Phineas and Ferb are gonna do it all!");
 
 
-
-Contestent winner = ContestManager.RunContestWithAudience(contestentsList, 5000, song1, song2, song3);
+int audienceAmount = 5000;
+Contestant winner = ContestManager.RunContestWithAudience(contestentsList, audienceAmount, song1, song2, song3);
 
 Console.WriteLine($"ladies, gentelman and basketballs, the winner, with {winner.Votes} votes, of the voice is {winner.GetName()}!!!");
 Console.WriteLine();
 
-foreach (Contestent contestent in contestentsList)
+foreach (Contestant contestent in contestentsList)
 {
     Console.WriteLine($"{contestent.GetName()}, finished with {contestent.Votes} votes!");
 }

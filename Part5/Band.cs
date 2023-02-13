@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Part5
 {
-    public class Band : Contestent
+    public class Band : Contestant
     {
         private string BandName;
         private int MembersAmount;
@@ -18,17 +18,17 @@ namespace Part5
             List<Singer> singers, List<Guitarist> guitarists, List<Drummer> drummers)
             : base(doesPlay, doesWrite)
         {
-            BandName = bandName;
+            this.BandName = bandName;
             this.Singers = singers;
             this.Guitarists = guitarists;
             this.Drummers = drummers;
-            MembersAmount = singers.Count() + guitarists.Count() + drummers.Count();
+            this.MembersAmount = singers.Count() + guitarists.Count() + drummers.Count();
 
         }
 
         public bool IsValidLists()
         {
-            if (Singers.Count() < 1 || Guitarists.Count() < 1 || Drummers.Count() < 1)
+            if (this.Singers.Count() < 1 || this.Guitarists.Count() < 1 || this.Drummers.Count() < 1)
             {
                 return false;
             }

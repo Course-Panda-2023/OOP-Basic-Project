@@ -10,13 +10,13 @@ namespace Part5
     {
         protected int PersonId { get; }
         public string Name { get; }
-        protected double HighetInMeters { get; }
+        protected double HeightInMeters { get; }
 
         public Person(int personId, string name, double highetInMeters)
         {
-            PersonId = personId;
-            Name = name;
-            HighetInMeters = highetInMeters;
+            this.PersonId = personId;
+            this.Name = name;
+            this.HeightInMeters = highetInMeters;
         }
     }
 }

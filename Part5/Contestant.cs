@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace Part5
 {
-    public abstract class Contestent
+    public abstract class Contestant
     {
         private static int ContestentCounter = 1;
 
-        public Contestent(bool doesPlay, bool doesWrite)
+        public Contestant(bool doesPlay, bool doesWrite)
         {
-            ContestentId = ContestentCounter;
+            this.ContestentId = ContestentCounter;
             ContestentCounter++;
-            DoesPlay = doesPlay;
-            DoesWrite = doesWrite;
-            Votes = 0;
+            this.DoesPlay = doesPlay;
+            this.DoesWrite = doesWrite;
+            this.Votes = 0;
         }
 
         protected int ContestentId;

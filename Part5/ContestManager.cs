@@ -8,7 +8,7 @@ namespace Part5
 {
     public abstract class ContestManager
     {
-        public static Contestent RunContestWithJudge(List<Contestent> contestentList, Judge judge, params Song[] songs)
+        public static Contestant RunContestWithJudge(List<Contestant> contestentList, Judge judge, params Song[] songs)
         {
             if (contestentList.Count == 1)
             {
@@ -25,10 +25,10 @@ namespace Part5
             return rnd.Next(numOfContestents);
         }
 
-        public static Contestent RunContestWithAudience(List<Contestent> contestentList, int audienceAmount, params Song[] songs)
+        public static Contestant RunContestWithAudience(List<Contestant> contestentList, int audienceAmount, params Song[] songs)
         {
             int currVotes = 0;
-            foreach (Contestent contestent in contestentList)
+            foreach (Contestant contestent in contestentList)
             {
                 contestent.Sing(SelectRandomSong(songs));
                 contestent.Votes = currVotes;
@@ -42,10 +42,10 @@ namespace Part5
             return FindWinner(contestentList);
         }
 
-        public static Contestent FindWinner(List<Contestent> contestentsList)
+        public static Contestant FindWinner(List<Contestant> contestentsList)
         {
-            Contestent winner = contestentsList[0];
-            foreach (Contestent contestent in contestentsList)
+            Contestant winner = contestentsList[0];
+            foreach (Contestant contestent in contestentsList)
             {
                 if (contestent.Votes > winner.Votes)
                 {
@@ -54,10 +54,10 @@ namespace Part5
             }
             return winner;
         }
-        public static List<Contestent> GenerateNextRound(List<Contestent> contestentList, Judge judge, params Song[] songs)
+        public static List<Contestant> GenerateNextRound(List<Contestant> contestentList, Judge judge, params Song[] songs)
         {
-            Contestent contestent1, contestent2, currentWinner;
-            List<Contestent> winners = new List<Contestent>();
+            Contestant contestent1, contestent2, currentWinner;
+            List<Contestant> winners = new List<Contestant>();
 
             if (contestentList.Count % 2 != 0 )
             {
@@ -81,51 +81,7 @@ namespace Part5
             return winners;
         }
 
-        public static List<Contestent> ConvertToContestentList(params Contestent[] list)
-        {
-            List<Contestent> contestents= new List<Contestent>();
-            foreach (Contestent contestent in list)
-            {
-                contestents.Add(contestent);
-            }
-
-            return contestents;
-        }
-
-        public static List<Singer> ConvertToSingerList(params Singer[] list)
-        {
-            List<Singer> singers = new List<Singer>();
-            foreach (Singer singer in list)
-            {
-                singers.Add(singer);
-            }
-
-            return singers;
-        }
-
-        public static List<Drummer> ConvertToDrummerList(params Drummer[] list)
-        {
-            List<Drummer> drummers = new List<Drummer>();
-            foreach (Drummer drummer in list)
-            {
-                drummers.Add(drummer);
-            }
-
-            return drummers;
-        }
-
-        public static List<Guitarist> ConvertToSingerList(params Guitarist[] list)
-        {
-            List<Guitarist> guitarists = new List<Guitarist>();
-            foreach (Guitarist guitarist in list)
-            {
-                guitarists.Add(guitarist);
-            }
-
-            return guitarists;
-        }
-
-        public static Contestent SelectRandomContestent(List<Contestent> contestents)
+        public static Contestant SelectRandomContestent(List<Contestant> contestents)
         {
             Random rnd = new Random();
             int randomIndex = rnd.Next(contestents.Count-1);
