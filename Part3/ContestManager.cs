@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Part2
+namespace Part3
 {
     public abstract class ContestManager
     {
