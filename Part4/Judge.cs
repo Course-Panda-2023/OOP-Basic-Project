@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Part1
+namespace Part4
 {
     public class Judge : Person
     {
@@ -26,7 +26,7 @@ namespace Part1
         {
             Random rnd = new Random();
             int winnerIndex = rnd.Next(contestents.Length);
-            Console.WriteLine($"This is {base.Name} and I saw a shitshow but the winner is {contestents[winnerIndex].Name}");
+            Console.WriteLine($"This is {base.Name} and I saw a shitshow but the winner is {contestents[winnerIndex].GetName()}");
             Console.WriteLine();
             return contestents[winnerIndex];
         }

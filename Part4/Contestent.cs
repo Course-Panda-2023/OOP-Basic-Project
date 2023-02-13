@@ -1,16 +1,17 @@
-﻿using System;
+﻿using Part4;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Part1
+namespace Part4
 {
-    public class Contestent : Person
+    public abstract class Contestent
     {
         private static int ContestentCounter = 1;
 
-        public Contestent(int personId, string name, double highetInMeters, bool doesPlay, bool doesWrite) : base(personId, name, highetInMeters)
+        public Contestent(bool doesPlay, bool doesWrite)
         {
             ContestentId = ContestentCounter;
             ContestentCounter++;
@@ -24,12 +25,7 @@ namespace Part1
         private bool DoesWrite { get; set; }
         public int Votes { get; set; }
 
-        public void Sing(Song song)
-        {
-            Console.WriteLine($"My name is {base.Name} and i'm going to sing: {song.SongName}");
-            Console.WriteLine(song.SongWords);
-            Console.WriteLine();
-
-        }
+        public abstract void Sing(Song song);
+        public abstract string GetName();
     }
 }
