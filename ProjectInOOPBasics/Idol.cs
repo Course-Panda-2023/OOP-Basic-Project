@@ -22,6 +22,17 @@ namespace ProjectInOOPBasics
             get { return name; }
         }
 
+        public Idol(string name)
+        {
+            this.name = name;
+        }
+
+        public Idol(string name, params IIdol[] idols)
+        {
+            this.name = name;
+            Add(idols);
+        }
+
         public Idol(params IIdol[] idols)
         {
             Add(idols);
@@ -40,6 +51,7 @@ namespace ProjectInOOPBasics
                 this.idols.Add(idol);
             }
         }
+
 
         public void CopyByVal(List<IIdol> idolsAsList)
         {
