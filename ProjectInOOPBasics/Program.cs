@@ -14,9 +14,41 @@ IIdol boysBand1 = new Idol("Backstreet boys", new Idol("Steve1"), new Idol("Stev
 IIdol boysBand2 = new Idol("Westlife", new Idol("Steve6"), new Idol("Steveu"), new Idol("Steven"), new Idol("Stevene"), new Idol("Stevel"));
 IIdol boysBand3 = new Idol("Jonas Brothers", new Idol("Bob"), new Idol("Bob1"), new Idol("Roby"), new Idol("PickleMan"), new Idol("Jack"));
 IIdol boysBand4 = new Idol("High Five", new Idol("Steve1Boris"), new Idol("Steve2"), new Idol("Steve3"), new Idol("Steve4"), new Idol("Blah"));
+List<Hero> heroesBand1 = new()
+{
+    new GuitarHero("Steven Steve"),
+    new BoomTrachHero("Steven the drummer")
+};
+
+boysBand1.SetHeroes(heroesBand1);
+
 idolsNamesACopy.Add(boysBand1);
+
+List<Hero> heroesBand2 = new()
+{
+    new GuitarHero("Steven Steve"),
+    new BoomTrachHero("Steven the drummer")
+};
+
+boysBand2.SetHeroes(heroesBand2);
 idolsNamesACopy.Add(boysBand2);
+
+List<Hero> heroesBand3 = new()
+{
+    new GuitarHero("Steven Steve"),
+    new BoomTrachHero("Steven the drummer")
+};
+
+boysBand3.SetHeroes(heroesBand3);
 idolsNamesACopy.Add(boysBand3);
+
+List<Hero> heroesBand4 = new()
+{
+    new GuitarHero("Steven Steve"),
+    new BoomTrachHero("Steven the drummer")
+};
+
+boysBand4.SetHeroes(heroesBand4);
 idolsNamesACopy.Add(boysBand4);
 Idol root = new Idol();
 Random rand = new Random();

@@ -11,6 +11,13 @@ namespace ProjectInOOPBasics
     {
         List<IIdol> idols = new List<IIdol>();
 
+        List<Hero> heroes = new List<Hero>();
+
+        public List<Hero> Heroes
+        {
+            get { return heroes; }
+            set { heroes = value; }
+        }
         public List<IIdol> GetIdols() 
         { 
             return idols;
@@ -37,6 +44,30 @@ namespace ProjectInOOPBasics
         {
             Add(idols);
         }
+
+        public Idol(List<Hero> heros, params IIdol[] idols)
+        {
+            Add(idols);
+            bool isGuitar = false;
+            bool isDrummer = false;
+            foreach(var hero in CollectionsMarshal.AsSpan(heros))
+            {
+                if (hero is GuitarHero)
+                {
+                    isGuitar = true;
+                }
+                else if (hero is BoomTrachHero)
+                {
+                    isDrummer = true;
+                }
+                this.heroes.Add(hero);
+            }
+            if (!isGuitar || !isDrummer)
+            {
+                Console.WriteLine("Must be a drummer and a guitar hero");
+            }
+        }
+
 
         public void AddOne(IIdol idol)
         {
@@ -84,6 +115,14 @@ namespace ProjectInOOPBasics
         public string GetName()
         {
             return name;
+        }
+
+        public void SetHeroes(List<Hero> heroes)
+        {
+            foreach (var hero in CollectionsMarshal.AsSpan(heroes))
+            {
+                this.heroes.Add(hero);
+            }
         }
     }
 }
