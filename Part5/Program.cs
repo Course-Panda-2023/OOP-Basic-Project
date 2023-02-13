@@ -67,3 +67,9 @@ foreach (Contestent contestent in contestentsList)
 {
     Console.WriteLine($"{contestent.GetName()}, finished with {contestent.Votes} votes!");
 }
+
+Console.WriteLine();
+Console.WriteLine("round 2!!!");
+Console.WriteLine();
+
+ContestManager.RunContestWithJudge(contestentsList, simon, song1, song2, song3);
