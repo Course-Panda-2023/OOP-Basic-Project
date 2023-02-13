@@ -1,17 +1,12 @@
 
-using System;
-using System.Threading;
 
+public class SingleSinger: Competitor{
 
-public class Singer: Member{
-
-    public Singer(MemberName name): base(name){
-        if (Metadata.MemberNameToType[name] != MemberType.Singer){
-            throw new Exception($"{name} is not a singer");
-        }
+    public SingleSinger(MemberName name): base(name){
+        
     }
 
-    public string StartSinging(){
+    public override string StartSinging(){
         string songName = Metadata.GetRandomSongName(this.name);
         string lyrics = Metadata.Songs[songName];
 

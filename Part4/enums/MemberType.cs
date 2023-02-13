@@ -1,4 +1,4 @@
 public enum MemberType{
 	Judge,
-	Singer
+	Competitor
 }

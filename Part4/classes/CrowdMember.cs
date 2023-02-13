@@ -6,7 +6,7 @@ public class CrowdMember{
         this.name = name;
     }
 
-    public Singer ChooseWinner(Singer[] singers, string[] lyricses){
+    public Competitor ChooseWinner(Competitor[] singers, string[] lyricses){
         Random rnd = new Random();
         int coin = rnd.Next(0, 2); 
 
