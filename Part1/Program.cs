@@ -149,7 +149,6 @@ public class Program
             Console.WriteLine($"Final round: {c.getSingers()[0].Name} is the winner!");
         }
     }
-
     public static void Main(string[] args)
     {
         SingingContest contest = new SingingContest();
