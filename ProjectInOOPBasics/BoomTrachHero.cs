@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace ProjectInOOPBasics
 {
-    internal class Singer : IIdol
+    internal class BoomTrachHero : Hero
     {
         private string name;
 
-        public Singer(string name)
+        public BoomTrachHero(string name)
         {
             this.name = name;
         }
-        public void Execute()
+
+        public string Name
         {
-            Console.Write($"{name} ");
+            get { return name; }
         }
     }
 }
