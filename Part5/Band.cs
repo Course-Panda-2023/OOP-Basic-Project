@@ -19,16 +19,20 @@ namespace Part5
             : base(doesPlay, doesWrite)
         {
             BandName = bandName;
-
-            if (singers.Count() < 1 || guitarists.Count() < 1 || drummers.Count() < 1 )
-            {
-                throw new EmptyBandException("no singers/guitarists/drummers added", bandName);
-            }
             this.Singers = singers;
             this.Guitarists = guitarists;
             this.Drummers = drummers;
             MembersAmount = singers.Count() + guitarists.Count() + drummers.Count();
 
+        }
+
+        public bool IsValidLists()
+        {
+            if (Singers.Count() < 1 || Guitarists.Count() < 1 || Drummers.Count() < 1)
+            {
+                return false;
+            }
+            return true;
         }
 
         public override string GetName()
