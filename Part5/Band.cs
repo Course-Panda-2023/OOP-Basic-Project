@@ -14,25 +14,11 @@ namespace Part5
         private List<Guitarist> Guitarists;
         private List<Drummer> Drummers;
 
-        public Band(string bandName, int membersAmount, bool doesPlay, bool doesWrite, List<Singer> singers) : base(doesPlay, doesWrite)
-        {
-            BandName= bandName;
-            MembersAmount = membersAmount;
-
-            if (singers.Count() < 1)
-            {
-                throw new EmptyBandException("no singers added", bandName);
-            }
-            Singers = singers;
-
-        }
-
-        public Band(string bandName, int membersAmount, bool doesPlay, bool doesWrite,
+        public Band(string bandName, bool doesPlay, bool doesWrite,
             List<Singer> singers, List<Guitarist> guitarists, List<Drummer> drummers)
             : base(doesPlay, doesWrite)
         {
             BandName = bandName;
-            MembersAmount = membersAmount;
 
             if (singers.Count() < 1 || guitarists.Count() < 1 || drummers.Count() < 1 )
             {
@@ -41,6 +27,8 @@ namespace Part5
             this.Singers = singers;
             this.Guitarists = guitarists;
             this.Drummers = drummers;
+            MembersAmount = singers.Count()+guitarists.Count()+drummers.Count();
+
         }
 
         public override string GetName()
