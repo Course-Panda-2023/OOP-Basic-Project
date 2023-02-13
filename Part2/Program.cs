@@ -25,7 +25,7 @@ static void Part1()
     juries.Add(new OOPBasicProject.Jury("Simon Cowell", 63, "London", "UK"));
 
     Helper.SelectingSongsBySingers(singers, CompetitionSongList);
-    Dictionary<OOPBasicProject.Singer, int> voteCounts = new Dictionary<OOPBasicProject.Singer, int>();
+    //Dictionary<OOPBasicProject.Singer, int> voteCounts = new Dictionary<OOPBasicProject.Singer, int>();
     Singer absoluteWinner = Helper.GetAbsoluteWinner(Helper.GetVotesFromJury(singers, juries));
 
     Console.WriteLine("The winner of the song competition is: " + absoluteWinner.Name);
@@ -62,17 +62,13 @@ static void Part2()
     List<OOPBasicProject.Jury> juries = new List<OOPBasicProject.Jury>();
     juries.Add(new OOPBasicProject.Jury("Simon Cowell", 63, "London", "UK"));
 
-    //HashSet<OOPBasicProject.Singer> pairs = new HashSet<OOPBasicProject.Singer>();
-
-    List<Tuple<OOPBasicProject.Singer, OOPBasicProject.Singer>> pairs = new List<Tuple<Singer, Singer>>();
-
-    // Generate random pairs of strings until all unique pairs are generated
+    
     Random rnd = new Random();
     
-    //Tuple <OOPBasicProject.Singer, OOPBasicProject.Singer> singerCandidate = new Tuple<Singer, Singer>(singers[i], singers[j]);
+    
     List<int> singersIndexes = new List<int>();
     //while (pairs.Count < (temp_singers.Count * (temp_singers.Count - 1)) / 2)
-    while (pairs.Count < singers.Count / 2)
+    /*while (pairs.Count < singers.Count / 2)
     {
         int i = rnd.Next(0, singers.Count);
         int j = rnd.Next(0, singers.Count);
@@ -87,21 +83,41 @@ static void Part2()
             singersIndexes.Add(j);            
             Console.WriteLine($"{singers[i].ToString()}, {singers[j].ToString()}");           
         }
-    }
-    pairs = Helper.makeRandomPairs(singers);
+    }*/
+    /*pairs = Helper.makeRandomPairs(singers);
     foreach(var pair in pairs)
     {
         Console.WriteLine("({0}, {1})", pair.Item1.ToString(), pair.Item2.ToString());
-    }
-    //Console.WriteLine(pairs.Count());
-    /*List<int> numbers = new List<int> { 1, 2, 3, 4 };
-    List<Tuple<int, int>> pairs = GetPairs(numbers);
-    foreach (var pair in pairs)
+    }*/
+    List<List<OOPBasicProject.Singer>> pairsList = Helper.makeRandomPairs(singers);
+    List<Singer> finalists = new List<Singer>();
+    foreach(var pair in pairsList)
     {
-        Console.WriteLine("({0}, {1})", pair.Item1, pair.Item2);
+        Console.WriteLine("{0}, {1}", pair[0].ToString(), pair[1].ToString());
+        finalists.Add(Helper.GetAbsoluteWinner(Helper.GetVotesFromJury(pair, juries)));
+        //finalists.Add()
     }
-*/
-
+    //Console.WriteLine("The winner of the song competition is: " + Helper.GetAbsoluteWinner(finalists).Name);
+    Console.WriteLine();
+    /*foreach(var finalist in finalists)
+    {
+        Console.WriteLine(finalist.Name);
+    }*/
+    pairsList = Helper.makeRandomPairs(finalists);
+    finalists.Clear();  
+    foreach (var pair in pairsList)
+    {
+        Console.WriteLine("{0}, {1}", pair[0].ToString(), pair[1].ToString());
+        finalists.Add(Helper.GetAbsoluteWinner(Helper.GetVotesFromJury(pair, juries)));
+        //finalists.Add()
+    }
+    Console.WriteLine();
+    foreach (var finalist in finalists)
+    {
+        Console.WriteLine(finalist.Name);
+    }
+    Singer absoluteWinner = Helper.GetAbsoluteWinner(Helper.GetVotesFromJury(finalists, juries));
+    Console.WriteLine("The winner of the song competition is: " + absoluteWinner.Name);
     Console.ReadLine();
 }
 Part2();
