@@ -1,5 +1,4 @@
-﻿using Part1;
-using Part2;
+﻿using Part2;
 
 Judge simon = new Judge(1234512, "Simon Kawel", 1.83, 35, true);
 Contestent madona = new Contestent(1322332, "Madona", 1.58, false, true);
