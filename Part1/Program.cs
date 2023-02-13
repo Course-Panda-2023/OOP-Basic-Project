@@ -1,82 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class Person
+public class lyrics
 {
-    public string Name { get; set; }
-    public Person(string Name)
+    public static string[] useLyrics =
     {
-        this.Name = Name;
-    }
-}
-public class SingingContest
-{
-    public List<Person> singers;
-
-    public SingingContest()
-    {
-        singers = new List<Person>();
-    }
-
-    public SingingContest(List<Person> singers)
-    {
-        this.singers = singers;
-    }
-
-    public void addSinger(Singer singer)
-    {
-        singers.Add(singer);
-    }
-
-    public void removeSinger(Singer singer)
-    {
-        singers.Remove(singer);
-    }
-
-    public List<Person> getSingers()
-    {
-        return singers;
-    }
-
-    public void everyoneSing()
-    {
-        string[] lyrics = { "its about drive its about power", "you've been hit by you've been struck by a smooth criminal",
-                "we are the champions", "somebody once told me the world aint gonna roll me", "hey now you're an all star",
-                "gangster rap"};
-        Random rand = new Random();
-        foreach (Singer s in singers)
-        {
-            s.sing(lyrics[rand.Next(lyrics.Length)]);
-        }
-    }
-}
-public class Singer : Person
-{
-    public Singer(string Name) : base(Name)
-    {
-
-    }
-
-    public void sing(string lyric)
-    {
-        Console.WriteLine($"{this.Name}: {lyric}");
-    }
-}
-public class Judge : Person
-{
-    public Judge(string Name) : base(Name)
-    {
-
-    }
-
-    public Singer ChooseWinner(SingingContest contest)
-    {
-        Random rand = new Random();
-        List<Person> singerList = contest.getSingers();
-        int winnerIndex = rand.Next(singerList.Count);
-        Console.WriteLine($"judge {this.Name}: hmmm... the winner is {singerList[winnerIndex].Name}");
-        return (Singer)singerList[winnerIndex];
-    }
+        "its about drive its about power",
+        "you've been hit by you've been struck by a smooth criminal",
+        "we are the champions",
+        "somebody once told me the world aint gonna roll me",
+        "hey now you're an all star",
+        "gangster rap",
+        "im blue da ba de da ba da",
+        "im the slim shady",
+        "hi my name is",
+        "ah sama lama dua bua"
+    };
 }
 public class Program
 {
@@ -98,12 +37,12 @@ public class Program
                 int numberOfSingers = c.getSingers().Count;
                 for (int i = 0; i < numberOfSingers; i++)
                 {
-                    Singer singer1 = (Singer)tournamentCopy.getSingers()[i];
-                    Singer singer2 = (Singer)tournamentCopy.getSingers()[i + 1];
+                    Person singer1 = tournamentCopy.getSingers()[i];
+                    Person singer2 = tournamentCopy.getSingers()[i + 1];
                     Console.WriteLine($"Match {i + 1}: {singer1.Name} vs. {singer2.Name}");
                     SingingContest duel = new SingingContest(new List<Person> { singer1, singer2 });
                     duel.everyoneSing();
-                    Singer winner = j.ChooseWinner(duel);
+                    Person winner = j.ChooseWinner(duel);
                     Console.WriteLine($"Winner: {winner.Name}\n");
                     tournamentCopy.removeSinger(singer1);
                     tournamentCopy.removeSinger(singer2);
@@ -149,8 +88,8 @@ public class Program
                 int numberOfSingers = c.getSingers().Count;
                 for (int i = 0; i < numberOfSingers; i++)
                 {
-                    Singer singer1 = (Singer)tournamentCopy.getSingers()[i];
-                    Singer singer2 = (Singer)tournamentCopy.getSingers()[i + 1];
+                    Person singer1 = tournamentCopy.getSingers()[i];
+                    Person singer2 = tournamentCopy.getSingers()[i + 1];
                     int p1votes = 0, p2votes = 0;
                     Console.WriteLine($"Match {i + 1}: {singer1.Name} vs. {singer2.Name}");
                     SingingContest duel = new SingingContest(new List<Person> { singer1, singer2 });
@@ -171,7 +110,7 @@ public class Program
                                 break;
                         }
                     }
-                    Singer winner;
+                    Person winner;
                     if (p1votes > p2votes)
                     {
                         winner = singer1;
@@ -199,11 +138,12 @@ public class Program
 
                 }
                 Console.WriteLine($"all winners of round {round}:");
-                foreach (Singer s in winners)
+                foreach (Person s in winners)
                 {
                     Console.WriteLine(s.Name);
                     tournamentCopy.addSinger(s);
                 }
+                Console.WriteLine();
                 round++;
             }
             Console.WriteLine($"Final round: {c.getSingers()[0].Name} is the winner!");
@@ -224,12 +164,19 @@ public class Program
         contest.addSinger(new Singer("kesha"));
         contest.addSinger(new Singer("clarkson"));
         contest.addSinger(new Singer("katy perry"));
-        contest.addSinger(new Singer("rihana"));
-        contest.addSinger(new Singer("beyonce"));
-        //contest.addSinger(new Singer("justin bieber"));
+        //contest.addSinger(new Singer("rihana"));
+        //contest.addSinger(new Singer("beyonce"));
+
+        List<Person> BandMembers1 = new List<Person>() { new Singer("memelord"), new Drummer("yo"), new Guitarist("guitar man"), new Guitarist("good guitar") };
+        List<Person> BandMembers2 = new List<Person>() { new Singer("evil god"), new Drummer("hehehyo"), new Guitarist("evil guitar man") };
+        Band b1 = new Band("the good people", BandMembers1);
+        Band b2 = new Band("the evil people", BandMembers2);
+        contest.addBand(b1);
+        contest.addBand(b2);
         //contest.everyoneSing();
         //j.ChooseWinner(contest);
         CrowdTournament(contest, j, 5);
     }
 }
+
 
