@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Part4
+{
+    public class Band : Contestent
+    {
+        private string BandName;
+        private int MembersAmount;
+        private List<Singer> Singers;
+
+        public Band(string bandName, int membersAmount, bool doesPlay, bool doesWrite, List<Singer> singers) : base(doesPlay, doesWrite)
+        {
+            BandName= bandName;
+            MembersAmount = membersAmount;
+            Singers = singers;
+        }
+
+        public override string GetName()
+        {
+            return this.BandName;
+        }
+
+        public override void Sing(Song song)
+        {
+            Console.WriteLine($"We are {this.BandName} and we will sing {song.SongName}!");
+            foreach( Singer singer in Singers )
+            {
+                Console.WriteLine($"{singer.Name}: {song.SongWords}");
+
+            }
+            Console.WriteLine();
+        }
+    }
+}
