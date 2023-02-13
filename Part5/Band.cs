@@ -11,12 +11,25 @@ namespace Part5
         private string BandName;
         private int MembersAmount;
         private List<Singer> Singers;
+        private List<Guitarist> Guitarists;
+        private List<Drummer> Drummers;
 
         public Band(string bandName, int membersAmount, bool doesPlay, bool doesWrite, List<Singer> singers) : base(doesPlay, doesWrite)
         {
             BandName= bandName;
             MembersAmount = membersAmount;
             Singers = singers;
+        }
+
+        public Band(string bandName, int membersAmount, bool doesPlay, bool doesWrite,
+            List<Singer> singers, List<Guitarist> guitarists, List<Drummer> drummers)
+            : base(doesPlay, doesWrite)
+        {
+            BandName = bandName;
+            MembersAmount = membersAmount;
+            this.Singers = singers;
+            this.Guitarists = guitarists;
+            this.Drummers = drummers;
         }
 
         public override string GetName()
