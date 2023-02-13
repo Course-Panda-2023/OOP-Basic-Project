@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +17,13 @@ namespace OOPprojectS
             this.songString = songString;
         }
 
-        public string getName(){
+        public string getName()
+        {
             return this.name;
         }
 
-        public string getSong(){
+        public string getSong()
+        {
             return this.songString;
         }
     }

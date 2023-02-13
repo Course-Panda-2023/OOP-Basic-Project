@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,31 +10,38 @@ namespace OOPprojectS
     {
         private Judge judge;
 
-        public ContestWithJudge(List<Singer> singersList, Judge judge){
-            this.singersList = singersList;
+        public ContestWithJudge(List<Performer> performers, Judge judge)
+        {
+            this.performersList = performers;
             this.judge = judge;
         }
 
-        public override void performContest(){
+        public override void performContest()
+        {
             Random rnd = new Random();
-            List<Singer> participants = new List<Singer>(this.singersList);
-            Console.WriteLine("Performing contest.\nThe judge is " + this.judge.getName() + 
+            List<Performer> participants = new List<Performer>(this.performersList);
+            Console.WriteLine("Performing contest.\nThe judge is " + this.judge.getName() +
             "\nThe participants are:");
-            foreach(Singer s in this.singersList){
+            foreach (Performer s in this.performersList)
+            {
                 Console.WriteLine(s.getName());
             }
-            while(participants.Count != 1){
+            while (participants.Count != 1)
+            {
                 int randIndex1 = rnd.Next(participants.Count);
                 int randIndex2 = randIndex1;
-                while (randIndex2 == randIndex1){
+                while (randIndex2 == randIndex1)
+                {
                     randIndex2 = rnd.Next(participants.Count);
                 }
-                Singer winner = this.judge.judge(participants.ElementAt(randIndex1), participants.ElementAt(randIndex2));
-                Singer loser;
-                if (winner == participants.ElementAt(randIndex1)){
+                Performer winner = this.judge.judge(participants.ElementAt(randIndex1), participants.ElementAt(randIndex2));
+                Performer loser;
+                if (winner == participants.ElementAt(randIndex1))
+                {
                     loser = participants.ElementAt(randIndex2);
                 }
-                else{
+                else
+                {
                     loser = participants.ElementAt(randIndex1);
                 }
                 participants.Remove(loser);

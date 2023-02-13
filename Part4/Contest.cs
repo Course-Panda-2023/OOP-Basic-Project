@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +9,11 @@ namespace OOPprojectS
 {
     public abstract class Contest
     {
-        public List<Singer> singersList;
+        public List<Performer> performersList;
 
-        public virtual void performContest(){
-            
+        public virtual void performContest()
+        {
+
         }
     }
 }

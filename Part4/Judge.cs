@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,13 +9,15 @@ namespace OOPprojectS
     public class Judge
     {
         private string name;
-        public Judge(string name){
+        public Judge(string name)
+        {
             this.name = name;
         }
-        public string getName(){
+        public string getName()
+        {
             return this.name;
         }
-        public Singer judge(Singer s1, Singer s2)
+        public Performer judge(Performer s1, Performer s2)
         {
             Console.WriteLine("Judge " + this.name + " judges " + s1.getName() + ", " +
             s2.getName() + ":");
@@ -23,12 +25,14 @@ namespace OOPprojectS
             s2.Sing();
             Random r = new Random();
             double num = r.NextDouble();
-            if (num >= 0.5){
-                Console.WriteLine("Singer " + s1.getName() + " wins!");
+            if (num >= 0.5)
+            {
+                Console.WriteLine("Performer " + s1.getName() + " wins!");
                 return s1;
             }
-            else{
-                Console.WriteLine("Singer " + s2.getName() + " wins!");
+            else
+            {
+                Console.WriteLine("Performer " + s2.getName() + " wins!");
 
                 return s2;
             }
