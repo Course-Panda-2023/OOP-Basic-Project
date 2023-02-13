@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOPBasicProject
 {
-    class Singer : People
+   internal class Singer : People
     {
         private string _singerName;
         private int _singerAge;
@@ -65,7 +65,8 @@ namespace OOPBasicProject
         }
         public override string ToString()
         {
-            return string.Format("Name: {0}, Age: {1}, City: {2}, Country: {3}, Song: {4}", _singerName, _singerAge, _singerCity, _singerCountry, _singerSong);
+            //return string.Format("Name: {0}, Age: {1}, City: {2}, Country: {3}, Song: {4}", _singerName, _singerAge, _singerCity, _singerCountry, _singerSong);
+            return string.Format("{0}", _singerName);
         }
     }
 }

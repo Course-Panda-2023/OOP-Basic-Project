@@ -20,38 +20,10 @@ singers.Add(new OOPBasicProject.Singer("Christina Aguilera", 42, "New York", "US
 
 List<OOPBasicProject.Jury> juries = new List<OOPBasicProject.Jury>();
 juries.Add(new OOPBasicProject.Jury("Simon Cowell", 63, "London", "UK"));
-//juries.Add(new Jury("Jury 2"));
 
-foreach (OOPBasicProject.Singer singer in singers)
-{
-    singer.SelectRandomSongFromList(CompetitionSongList);
-}
-//Helper.SelectingSongsBySingers(singers, CompetitionSongList);
+Helper.SelectingSongsBySingers(singers, CompetitionSongList);
 Dictionary<OOPBasicProject.Singer, int> voteCounts = new Dictionary<OOPBasicProject.Singer, int>();
+Singer absoluteWinner = Helper.GetAbsoluteWinner(Helper.GetVotesFromJury(singers, juries));
 
-foreach (OOPBasicProject.Jury jury in juries)
-{
-    //Selects winner
-    OOPBasicProject.Singer winner = jury.SelectWinnerRandomly(singers);
-    if (voteCounts.ContainsKey(winner))
-    {
-        voteCounts[winner]++;
-    }
-    else
-    {
-        voteCounts[winner] = 1;
-    }
-}
-Singer absoluteWinner = null;
-int maxVotes = 0;
-foreach (KeyValuePair<Singer, int> voteCount in voteCounts)
-{
-    //Counts votes of every jury for every participant
-    if (voteCount.Value > maxVotes)
-    {
-        maxVotes = voteCount.Value;
-        absoluteWinner = voteCount.Key;
-    }
-}
 Console.WriteLine("The winner of the song competition is: " + absoluteWinner.Name);
 Console.ReadLine();

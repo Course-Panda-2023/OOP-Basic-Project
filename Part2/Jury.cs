@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace OOPBasicProject
-{
-     class Jury : People
+{    
+    internal class Jury : People
     {
         private string _juryName;
         private int _juryAge;
