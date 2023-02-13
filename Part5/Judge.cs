@@ -114,16 +114,59 @@ class Judge
         }
     }
 
+    public static bool IsValid(Band b)
+    {
+        bool drummerFlag = false;
+        bool guitaristFlag = false;
+        bool singerFlag = false;
+
+        foreach (Performer p in b.Performers)
+        {
+            if (p.GetType() == typeof(Guitarist))
+            {
+                guitaristFlag = true;
+            }
+            else if (p.GetType() == typeof(Drummer))
+            {
+                drummerFlag = true;
+            }
+            else
+            {
+                singerFlag = true;
+            }
+        }
+
+        return guitaristFlag && singerFlag && drummerFlag;
+    }
+
+    public static List<Performer> ValidPerformers(Performer[] performers)
+    {
+        List<Performer> newList = new List<Performer>();
+        foreach (Performer performer in performers)
+        {
+            if (performer.GetType() != typeof(Guitarist) && performer.GetType() != typeof(Drummer))
+            {
+                if (performer.GetType() == typeof(Band) && IsValid((Band)performer))
+                {
+                    newList.Add(performer);
+                }
+                else if (performer.GetType() == typeof(Singer))
+                {
+                    newList.Add(performer);
+                }
+            }
+        }
+        return newList;
+    }
+
     public static void AudienceCompetition(Performer[] performers)
     {
         Random ran = new Random();
         int audienceNum = ran.Next();
-        foreach (Performer performer in performers)
+        List<Performer> list = Judge.ValidPerformers(performers);
+        foreach (Performer performer in list)
         {
-            if (performer.GetType() != typeof(Guitarist) && performer.GetType() !=typeof(Drummer))
-            {
-                performer.PerformOneOfThree();
-            }
+            performer.PerformOneOfThree();
         }
         AudienceVote(performers, audienceNum);
     }

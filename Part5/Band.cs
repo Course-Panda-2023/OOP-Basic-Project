@@ -8,7 +8,7 @@
     }
 
     private Performer[] mPerformers;
-    public Performer[] Performer
+    public Performer[] Performers
     {
         get { return mPerformers; }
         set { mPerformers = value; }
@@ -24,6 +24,7 @@
     public Band(string name, Performer[] performers)
     {
         mName = name;
+        //Every band has to have at least one guitarist one drummer and one singer
         mPerformers = performers;
         mSongs = new List<Song>();
     }
