@@ -76,54 +76,53 @@ class Judge
         }
     }
 
-    private static void AudienceVote(Singer[] singers, int audienceNum)
+    private static void AudienceVote(Performer[] performers, int audienceNum)
     {
         Random ran = new Random();
-        if (singers.Length == 1)
+        if (performers.Length == 1)
         {
-            Console.WriteLine($"The winner is: {singers[0].Name}");
+            Console.WriteLine($"The winner is: {performers[0].Name}");
         }
         else
         {
-            int[] votes = new int[singers.Length];
+            int[] votes = new int[performers.Length];
             for (int i = 0; i < audienceNum; i++)
             {
-                int vote = ran.Next(0, singers.Length);
+                int vote = ran.Next(0, performers.Length);
                 votes[vote]++;
             }
             int numTied = 0;
             int max = votes.Max();
-            for (int i = 0; i < singers.Length; i++)
+            for (int i = 0; i < performers.Length; i++)
             {
                 if (votes[i] == max ) 
                 { 
                     numTied++;
                 }
             }
-            Singer[] tied = new Singer[numTied];
+            Performer[] tied = new Performer[numTied];
             int j = 0;
-            for (int i = 0; i < singers.Length; i++)
+            for (int i = 0; i < performers.Length; i++)
             {
                 if (votes[i] == max)
                 {
-                    tied[j] = singers[i];
+                    tied[j] = performers[i];
                     j++;
                 }
             }
             AudienceVote(tied, numTied);
         }
     }
-    public static void AudienceCompetition(Singer[] singers)
+
+    public static void AudienceCompetition(Performer[] performers)
     {
         Random ran = new Random();
         int audienceNum = ran.Next();
-        foreach (Singer singer in singers)
+        foreach (Performer performer in performers)
         {
-            singer.PerformOneOfThree();
+            performer.PerformOneOfThree();
         }
-        AudienceVote(singers, audienceNum);
-
-
+        AudienceVote(performers, audienceNum);
     }
 
 

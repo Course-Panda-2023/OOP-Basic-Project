@@ -1,4 +1,4 @@
-﻿class Song
+﻿public class Song
 {
     private string mName;
     public string Name 

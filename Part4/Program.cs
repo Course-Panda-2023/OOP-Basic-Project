@@ -20,9 +20,25 @@ Song gaga1 = new Song("Shallow", "Tell me something, girl\r\nAre you happy in th
 Song christina1 = new Song("Beautiful", "Don't look at me\r\nEvery day is so wonderful\r\nThen suddenly it's hard to breathe\r\nNow and then I get insecure\r\nFrom all the pain\r\nI'm so ashamed\r\nI am beautiful no matter what they say\r\nWords can't bring me down\r\nI am beautiful in every single way\r\nYes, words can't bring me down, oh no\r\nSo don't you bring me down today\r\nTo all your friends you're delirious\r\nSo consumed in all your doom\r\nTrying hard to fill the emptiness\r\nThe pieces gone, left the puzzle undone\r\nIs that the way it is?\r\nYou are beautiful no matter what they say\r\nWords can't bring you down, oh no\r\nYou are beautiful in every single way\r\nYes, words can't bring you down, oh no\r\nSo don't you bring me down today\r\nNo matter what we do\r\n(No matter what we do)\r\nNo matter what we say\r\n(No matter what we say)\r\nWe're the song inside the tune (Yeah)\r\nFull of beautiful mistakes\r\nAnd everywhere we go\r\n(And everywhere we go)\r\nThe sun will always shine\r\n(The sun will always, always shine)\r\nAnd tomorrow we might wake on the other side\r\n'Cause we are beautiful no matter what they say\r\nYes, words won't bring us down, no, no\r\nWe are beautiful in every single way\r\nYes, words can't bring us down, oh, no\r\nSo don't you bring me down today\r\nOoh-oh-oh, yeah\r\nDon't you bring me down today\r\nYeah, ooh\r\nDon't you bring me down\r\nOoh, today");
 Song song3 = new Song("CAMPFIRE SONG song", " C A M P F I R E S O N G song");
 
-Singer[] list = { ladyGaga, christinaAguilera, madonna, kesha, britney, kellyClarkson, shakira, katyPerry, adele, rihanna, avrileLavigne, beyonce, nickiMinaj, justinBieber };
+Song[] songs = { gaga1, christina1, song3 };
+ladyGaga.AddList(songs);
+christinaAguilera.AddList(songs);
+madonna.AddList(songs);
+kesha.AddList(songs);
+britney.AddList(songs);
+kellyClarkson.AddList(songs);
+shakira.AddList(songs);
+katyPerry.AddList(songs);
+adele.AddList(songs);
+rihanna.AddList(songs);
+avrileLavigne.AddList(songs);
+beyonce.AddList(songs);
+nickiMinaj.AddList(songs);
+justinBieber.AddList(songs);
 
+Singer[] list = { ladyGaga, christinaAguilera, madonna, kesha, britney, kellyClarkson, shakira, katyPerry, adele, rihanna, avrileLavigne, beyonce, nickiMinaj, justinBieber };
 Band band = new Band("Band#1", list);
-band.AddSong(gaga1);
-band.Perform();
+band.AddList(songs);
+Performer[] list2 = { ladyGaga, christinaAguilera, madonna, kesha, britney, kellyClarkson, shakira, katyPerry, adele, rihanna, avrileLavigne, beyonce, nickiMinaj, justinBieber, band};
+Judge.AudienceCompetition(list2);
 Console.ReadLine();
