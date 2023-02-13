@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic;
+using Part5;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -122,12 +123,41 @@ class Judge
        List<Member> tie = new List<Member>();
        foreach (Member m in singers)
         {
-            //My program already picks the random song out of 3 in the constructor phase but i just wanted to show that the random song can be picked at the competition stage as well
-            /*
-            int randIndex = new Random().Next(0, singer.songList.Length); //randomly picks a song out of 3 songs to sing at the contest!
-            Console.WriteLine($"{singer.Name}: {singer.songList[randIndex]}");
-            */
-            m.Performance();
+            if (m.GetType() != typeof(Guitarist) && m.GetType() != typeof(Drummer)) //Drummers and Guitarist can't perform alone (without a band)
+            {
+                if (m.GetType() == typeof(Band))
+                {
+                    Band bandb = (Band)m;
+                    int numOfMember = bandb.Singers.Length;
+                    int numOfSingers = 0;
+                    int numOfDrummers = 0;
+                    int numOfGuitarists = 0;
+                    for (int i = 0; i < numOfMember; i++)//each band should have at least one drummer, one singer and one guitarist
+                    {
+                        if(bandb.Singers[i].GetType() == typeof(Guitarist))
+                        {
+                            numOfGuitarists++;
+                        }
+                        if (bandb.Singers[i].GetType() == typeof(Singer))
+                        {
+                            numOfSingers++;
+                        }
+                        if (bandb.Singers[i].GetType() == typeof(Drummer))
+                        {
+                            numOfDrummers++;
+                        }
+
+                    }
+                    if (numOfSingers >= 1 && numOfGuitarists >= 1 && numOfDrummers == 1)
+                    {
+                        m.Performance();
+                    }
+                }
+                else
+                {
+                    m.Performance();
+                }
+            }
         }
 
         Console.WriteLine("now for the crowd votes!");

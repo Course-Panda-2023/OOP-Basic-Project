@@ -2,19 +2,26 @@
 class Band : Member
 {
 	private string mBandName;
-	public string Name
+	private string mSong;
+    public string Song
+    {
+        get { return mSong; }
+        set { mSong = value; }
+    }
+    public string Name
 	{
 		get { return mBandName; }
 		set { mBandName = value; }
 	}
-	private Singer[] mSingers;
-	public Singer[] Singers { get { return mSingers; }}
+	private Member[] mSingers;
+	public Member[] Singers { get { return mSingers; }}
 	public string BandName { get { return mBandName; }}
-	public Band(Singer[] singers, string song, string bandName)
+	public Band(Member[] singers, string song, string bandName)
 	{
 		//mSingers=new Singer[singers.Length];
 		mSingers= singers;
-		foreach(Singer singer in mSingers)
+		mSong= song;
+		foreach(Member singer in mSingers)
 		{
 			singer.Song = song;
 		}
@@ -24,9 +31,9 @@ class Band : Member
     public void Performance()
     {
 		Console.WriteLine($"*together in harmony:*\n{mBandName}:");
-		foreach(Singer singer in mSingers)
+		foreach(Member member in mSingers)
 		{
-            Console.WriteLine($"{singer.Name}: {singer.Song}");
+            member.Performance();
         }
     }
 }
