@@ -20,9 +20,9 @@ namespace Part4
             Votes = 0;
         }
 
-        private int ContestentId { get; set; }
-        private bool DoesPlay { get; set; }
-        private bool DoesWrite { get; set; }
+        protected int ContestentId;
+        protected bool DoesPlay;
+        protected bool DoesWrite;
         public int Votes { get; set; }
 
         public abstract void Sing(Song song);

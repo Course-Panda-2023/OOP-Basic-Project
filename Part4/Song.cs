@@ -8,8 +8,8 @@ namespace Part4
 {
     public class Song
     {
-        public string SongName { get; set; }
-        public string SongWords { get; set; }
+        public string SongName { get; }
+        public string SongWords { get; }
 
         public Song(string songName, string songWords)
         {

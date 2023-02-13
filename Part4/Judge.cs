@@ -18,9 +18,9 @@ namespace Part4
         }
 
         private static int JudgeCounter = 1;
-        private int JudgeId { get; set; }
-        private int YearsOfExperience { get; set; }
-        private bool IsTough { get; set; }
+        private int JudgeId;
+        private int YearsOfExperience;
+        private bool IsTough;
 
         public Contestent ChooseWinner(params Contestent[] contestents)
         {
