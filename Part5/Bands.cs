@@ -16,30 +16,35 @@ namespace OOPBasicProject
         //private Rando
         public Band(string name) : base(name, 0, "Unknown", "Unknown")
         {
-            _bandName = name;
-            _bandAge = 0;
-            _bandCity = "Unknown";
-            _bandCountry = "Unknown";
-            _random = new Random();
-            int randNum = _random.Next(2, 10);
-            int randLength = _random.Next(3, 12);            
-            _bandParticipants = new List<Competitor>();
-            for (int i = 0; i < randNum; i++)
-            {
-                string randNames = Helper.RandomString(randLength);
-                _bandParticipants.Add(new Singer(randNames));
-            }
-            //_bandParticipants = singers;
+            this._bandName = name;
+            this._bandAge = 0;
+            this._bandCity = "Unknown";
+            this._bandCountry = "Unknown";
+            this._random = new Random();
+                       
+            _bandParticipants = new List<Competitor>() {
+                new Singer(Helper.RandomString(_random.Next(3, 10))),
+                new Drummers(Helper.RandomString(_random.Next(3, 10))),
+                new Guitarists(Helper.RandomString(_random.Next(3, 10)))};
+            
         }
         public Band(string name, int age, string city, string country, List<Competitor> singers) : base(name, age, city, country)
         {
-            _bandName = name;
-            _bandAge = age;
-            _bandCity = city;
-            _bandCountry = country;
-            _bandParticipants = singers;
+            this._bandName = name;
+            this._bandAge = age;
+            this._bandCity = city;
+            this._bandCountry = country;
+            this._bandParticipants = singers;
         }
-
+        public void addParticipant(Competitor newParticipant)
+        {
+            if (newParticipant.GetType() is OOPBasicProject.Band)
+            {
+                Console.WriteLine("You can't add a band to a band");
+                return;
+            }
+            _bandParticipants.Add(newParticipant);            
+        }
         public string BandName
         {
             get { return _bandName; }
@@ -76,15 +81,15 @@ namespace OOPBasicProject
             return BandName;
         }
         public void PrintBandParticipants()
-        {
-            foreach(Singer singer in _bandParticipants)
+        {            
+            foreach (Competitor bandParticipant in _bandParticipants)
             {
-                Console.WriteLine(singer.ToString());
+                Console.WriteLine(bandParticipant.ToString());
             }
         }
-        public void SelectSongByBandParticipants(List<Song> songsList)
+        /*public void SelectSongByBandParticipants(List<Song> songsList)
         {
             Helper.SelectingSongsBySingers(_bandParticipants, songsList);
-        }
+        }*/
     }
 }

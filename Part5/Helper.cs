@@ -72,14 +72,14 @@ namespace OOPBasicProject
             return new string(Enumerable.Repeat(chars, length)
                              .Select(s => s[random.Next(s.Length)]).ToArray());
         }
-        
 
-        public static List<Audience> MakeRandomAudienceList() 
+
+        public static List<Audience> MakeRandomAudienceList()
         {
             List<Audience> audience = new List<Audience>();
             Random rnd = new Random();
-            int rand_number = rnd.Next(1, 100);           
-            
+            int rand_number = rnd.Next(1, 100);
+
 
             for (int i = 0; i < rand_number; i++)
             {
@@ -92,25 +92,52 @@ namespace OOPBasicProject
             }
             return audience;
         }
-        // TODO: To unite with the same function for jury and audience
-       /* public static Dictionary<OOPBasicProject.Singer, int> GetVotesFromAudience(List<OOPBasicProject.Singer> singers, List<OOPBasicProject.Audience> audience)
+
+
+        public static void AddRandomCompetitors(List<Competitor> competitors, in int number, string type)
         {
-            Dictionary<OOPBasicProject.Singer, int> voteCounts = new Dictionary<OOPBasicProject.Singer, int>();
-            foreach (OOPBasicProject.Audience audience_member in audience)
+            int randLength;
+            Random rnd = new Random();            
+            for (int i = 0; i < number; i++)
             {
-                //Selects winner
-                OOPBasicProject.Singer winner = audience_member.VoteForSinger(singers);
-                if (voteCounts.ContainsKey(winner))
+                randLength = rnd.Next(3, 12);
+                if (type == "singer")
                 {
-                    voteCounts[winner]++;
+                    competitors.Add(new Singer(Helper.RandomString(randLength)));
+                } else if (type == "band")
+                {
+                    competitors.Add(new Band(Helper.RandomString(randLength)));
                 }
+                /*else if(type == "audience")
+                {
+                    competitors.Add(new Band(Helper.RandomString(randLength)));
+                    //Console.WriteLine("Wrong type of competitor");
+                }*/
                 else
                 {
-                    voteCounts[winner] = 1;
-                }
+                    Console.WriteLine("Wrong type of competitor");
+                }          
             }
-            return voteCounts;
-        }*/
+        }
+        // TODO: To unite with the same function for jury and audience
+        /* public static Dictionary<OOPBasicProject.Singer, int> GetVotesFromAudience(List<OOPBasicProject.Singer> singers, List<OOPBasicProject.Audience> audience)
+         {
+             Dictionary<OOPBasicProject.Singer, int> voteCounts = new Dictionary<OOPBasicProject.Singer, int>();
+             foreach (OOPBasicProject.Audience audience_member in audience)
+             {
+                 //Selects winner
+                 OOPBasicProject.Singer winner = audience_member.VoteForSinger(singers);
+                 if (voteCounts.ContainsKey(winner))
+                 {
+                     voteCounts[winner]++;
+                 }
+                 else
+                 {
+                     voteCounts[winner] = 1;
+                 }
+             }
+             return voteCounts;
+         }*/
         public static Dictionary<OOPBasicProject.Competitor, int> GetVotesFromAudience(List<OOPBasicProject.Competitor> competitors, List<OOPBasicProject.Audience> audience)
         {
             Dictionary<OOPBasicProject.Competitor, int> voteCounts = new Dictionary<OOPBasicProject.Competitor, int>();

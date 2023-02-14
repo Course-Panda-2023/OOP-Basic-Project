@@ -13,7 +13,7 @@ namespace OOPBasicProject
         private string _city;
         private string _country;
         
-        public People(string name, int age, string city, string country)
+        protected People(string name, int age, string city, string country)
         {
             _name = name;
             _age = age;

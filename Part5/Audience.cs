@@ -16,11 +16,17 @@ namespace OOPBasicProject
 
         public Audience(string name, int age, string city, string country) : base(name, age, city, country)
         {
-            _audName = name;
-            _audAge = age;
-            _audCity = city;
-            _audCountry = country;
-            
+            this._audName = name;
+            this._audAge = age;
+            this._audCity = city;
+            this._audCountry = country;            
+        }
+        public Audience(string name) : base(name, 0, "Unknown", "Unknown")
+        {
+            this._audName = name;
+            this._audAge = 0;
+            this._audCity = "Unknown";
+            this._audCountry = "Unknown";
         }
 
 
@@ -29,22 +35,22 @@ namespace OOPBasicProject
             get { return _audName; }
             set { _audName = value; }
         }
-        /*public int AudienceAge
+        public int AudienceAge
         {
-            get { return _juryAge; }
-            set { _juryAge = value; }
-        }*//*
-        
+            get { return _audAge; }
+            set { _audAge = value; }
+        }
+
         public string AudienceCuty
         {
-            get { return _juryCity; }
-            set { _juryCity = value; }
+            get { return _audCity; }
+            set { _audCity = value; }
         }
         public string AudienceCountry
         {
-            get { return _juryCountry; }
-            set { _juryCountry = value; }
-        }*/
+            get { return _audCountry; }
+            set { _audCountry = value; }
+        }
 
         /*public Singer VoteForSinger(List<Singer> singers)
         {

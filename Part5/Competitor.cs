@@ -10,8 +10,9 @@ namespace OOPBasicProject
         private string _compCity;
         private string _compCountry;
         private Song _song;
+        private bool _performed;
         private int _voteCount;       
-        public Competitor(string name, int age, string city, string country) : base(name, age, city, country)
+        protected Competitor(string name, int age, string city, string country) : base(name, age, city, country)
         {
             _compName = name;
             _compAge = age;
@@ -54,7 +55,26 @@ namespace OOPBasicProject
         {
             return CompetitorName;
         }
-
+        public bool Performed
+        {
+            get { return _performed; }
+            set { _performed = value; }
+        }
+        public void PerformSong()
+        {
+            if(_song != null)
+            {
+                Console.WriteLine(_compName + " didn't get a song!");
+                Performed = false;
+            }
+            if (!Performed)
+            {
+                Performed = true;
+                return;
+            }
+            Performed = false;
+        }
+        
     }
     
 }
