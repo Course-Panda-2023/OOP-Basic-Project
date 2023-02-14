@@ -8,8 +8,7 @@ namespace OOPBasicProject
         private string _drummersName;
         private int _drummersAge;
         private string _drummersCity;
-        private string _drummersCountry;
-        private Song _song;
+        private string _drummersCountry;        
         private int _voteCount;
 
         public Drummers(string name) : base(name, 0, "Unknown", "Unknown")
@@ -48,11 +47,7 @@ namespace OOPBasicProject
             get { return _drummersCountry; }
             set { _drummersCountry = value; }
         }
-        public Song Song
-        {
-            get { return _song; }
-            set { _song = value; }
-        }
+        
         public int VoteCount
         {
             get { return _voteCount; }

@@ -8,8 +8,8 @@ namespace OOPBasicProject
         private int _age;
         private string _city;
         private string _country;
-        private Song _song;
-        private int _voteCount;
+        
+        //private int _voteCount;
 
         public Guitarists(string name) : base(name, 0, "Unknown", "Unknown")
         {
@@ -48,16 +48,12 @@ namespace OOPBasicProject
             get { return _drummersCountry; }
             set { _drummersCountry = value; }
         }*/
-        public Song Song
-        {
-            get { return _song; }
-            set { _song = value; }
-        }
-        public int VoteCount
+        
+        /*public int VoteCount
         {
             get { return _voteCount; }
             set { _voteCount = value; }
-        }
+        }*/
 
         public override string ToString()
         {

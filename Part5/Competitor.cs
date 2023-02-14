@@ -14,10 +14,10 @@ namespace OOPBasicProject
         private int _voteCount;       
         protected Competitor(string name, int age, string city, string country) : base(name, age, city, country)
         {
-            _compName = name;
-            _compAge = age;
-            _compCity = city;
-            _compCountry = country;
+            this._compName = name;
+            this._compAge = age;
+            this._compCity = city;
+            this._compCountry = country;
         }
 
         public string CompetitorName
@@ -60,14 +60,19 @@ namespace OOPBasicProject
             get { return _performed; }
             set { _performed = value; }
         }
+        public void SelectRandomSongFromList(List<Song> songList)
+        {
+            Random random = new Random();
+            int randomSongIndex = random.Next(0, songList.Count);
+            Song = songList[randomSongIndex];
+        }
         public void PerformSong()
         {
             if(_song != null)
             {
                 Console.WriteLine(_compName + " didn't get a song!");
                 Performed = false;
-            }
-            if (!Performed)
+            }else if (!Performed)
             {
                 Performed = true;
                 return;

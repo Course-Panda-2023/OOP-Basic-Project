@@ -22,7 +22,7 @@ static void Part1()
     List<OOPBasicProject.Jury> juries = new List<OOPBasicProject.Jury>();
     juries.Add(new OOPBasicProject.Jury("Simon Cowell", 63, "London", "UK"));
 
-    Helper.SelectingSongsBySingers(singers, CompetitionSongList);
+    Helper.SelectingSongsByCompetitors(singers, CompetitionSongList);
     Competitor absoluteWinner = Helper.GetAbsoluteWinner(Helper.GetVotesFromJury(singers, juries));
 
     Console.WriteLine("The winner of the song competition is: " + absoluteWinner.Name);
@@ -122,7 +122,7 @@ static void Part3()
     singers.Add(new OOPBasicProject.Singer("Rhianna", 42, "New York", "USA"));
     singers.Add(new OOPBasicProject.Singer("Beyonce", 42, "New York", "USA"));
     singers.Add(new OOPBasicProject.Singer("Justin Bieber", 42, "New York", "USA"));
-    Helper.SelectingSongsBySingers(singers, CompetitionSongList);
+    Helper.SelectingSongsByCompetitors(singers, CompetitionSongList);
 
     /*foreach (var a in audience)
     {

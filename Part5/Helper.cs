@@ -8,7 +8,15 @@ namespace OOPBasicProject
 {
     class Helper
     {
-        public static void SelectingSongsBySingers(List<Competitor> competitors, List<Song> list)
+        //TODO Delete it
+       /* public static void SelectingSongsBySingers(List<Competitor> competitors, List<Song> list)
+        {
+            foreach (OOPBasicProject.Singer competitor in competitors)
+            {
+                competitor.SelectRandomSongFromList(list);
+            }
+        }*/
+        public static void SelectingSongsByCompetitors(List<Competitor> competitors, List<Song> list)
         {
             foreach (OOPBasicProject.Singer competitor in competitors)
             {

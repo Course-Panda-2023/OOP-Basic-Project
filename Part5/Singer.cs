@@ -15,7 +15,7 @@ namespace OOPBasicProject
         /*private string _singerSong;
         private string _singerSongDuration;
         private string _singerSongReleaseYear;*/
-        private Song _singerSong;
+        //private Song _singerSong;
         private Random _random;
         //public Singer() { }
         /*public Singer () : base()
@@ -33,7 +33,7 @@ namespace OOPBasicProject
             _singerAge = 0;
             _singerCity = "Unknown";
             _singerCountry = "Unknown";
-            _singerSong = new Song("Unknown", "Unknown", "Unknown", "Unknown");
+            //_singerSong = new Song("Unknown", "Unknown", "Unknown", "Unknown");
         }
         public Singer(string name, int age, string city, string country) : base(name, age, city, country)
         {
@@ -48,7 +48,7 @@ namespace OOPBasicProject
             _singerAge = age;
             _singerCity = city;
             _singerCountry = country;
-            _singerSong = song;
+            //_singerSong = song;
         }
         public string SingerName
         {
@@ -70,17 +70,8 @@ namespace OOPBasicProject
             get { return _singerCountry; }
             set { _singerCountry = value; }
         }
-        public Song SingerSong
-        {
-            get { return _singerSong; }
-            set { _singerSong = value; }
-        }
-        public void SelectRandomSongFromList(List<Song> songList)
-        {
-            Random random = new Random();
-            int randomSongIndex = random.Next(0, songList.Count);
-            _singerSong = songList[randomSongIndex];
-        }
+        
+        
         public override string ToString()
         {
             //return string.Format("Name: {0}, Age: {1}, City: {2}, Country: {3}, Song: {4}", _singerName, _singerAge, _singerCity, _singerCountry, _singerSong);

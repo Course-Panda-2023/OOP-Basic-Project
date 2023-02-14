@@ -9,8 +9,8 @@ namespace OOPBasicProject
         private int _bandAge;
         private string _bandCity;
         private string _bandCountry;
-        private Song _song;
-        private int _voteCount;
+        //private Song _song;
+        //private int _voteCount;
         private List<Competitor> _bandParticipants;
         private Random _random;
         //private Rando
@@ -65,16 +65,26 @@ namespace OOPBasicProject
             get { return _bandCountry; }
             set { _bandCountry = value; }
         }
-        public Song Song
+        public new void SelectRandomSongFromList(List<Song> songList)
+        {
+            Random random = new Random();
+            int randomSongIndex = random.Next(0, songList.Count);
+            this.Song = songList[randomSongIndex];
+            foreach (Competitor bandParticipant in _bandParticipants)
+            {
+                bandParticipant.Song = this.Song;
+            }
+        }
+        /*public Song Song
         {
             get { return _song; }
             set { _song = value; }
-        }
-        public int VoteCount
+        }*/
+        /*public int VoteCount
         {
             get { return _voteCount; }
             set { _voteCount = value; }
-        }
+        }*/
 
         public override string ToString()
         {
@@ -87,6 +97,29 @@ namespace OOPBasicProject
                 Console.WriteLine(bandParticipant.ToString());
             }
         }
+        public new void PerformSong()
+        {
+            //Console.WriteLine("The band {0} is performing", BandName);
+            foreach (Competitor bandParticipant in _bandParticipants)
+            {
+                if(this.Song == null) 
+                {
+                    Console.WriteLine("The band {0} didn't get a song!", BandName);
+                    return;
+                } 
+                bandParticipant.PerformSong();
+                /*if (!bandParticipant.Performed)
+                {
+                    this.Performed = false;
+                    return;
+                }*/
+            }
+        }
+        /*public new void Performed()
+        {            
+            //Console.WriteLine("The band {0} is performing", BandName);
+            
+        }*/
         /*public void SelectSongByBandParticipants(List<Song> songsList)
         {
             Helper.SelectingSongsBySingers(_bandParticipants, songsList);
