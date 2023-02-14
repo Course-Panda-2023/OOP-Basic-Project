@@ -5,37 +5,37 @@ using System.Text;
 using System.Threading.Tasks;
 class ContestDecidedByCrowd
 {
-    private List<ContestParticipant> mParticipantsList;
-    public List<ContestParticipant> SingersList
+    private List<Singer> mParticipantsList;
+    public List<Singer> SingersList
     {
         get { return mParticipantsList; }
         set { mParticipantsList = value; }
     }
     public ContestDecidedByCrowd()
     {
-        this.mParticipantsList = new List<ContestParticipant>();
+        this.mParticipantsList = new List<Singer>();
     }
-    public ContestDecidedByCrowd(List<ContestParticipant> list)
+    public ContestDecidedByCrowd(List<Singer> list)
     {
         this.mParticipantsList = list;
     }
-    public ContestParticipant SimulateRound()
+    public Singer SimulateRound()
     {
         Random rnd = new Random();
         if (this.mParticipantsList.Count > 1) 
         {
-            Dictionary<ContestParticipant, int> dic = new Dictionary<ContestParticipant, int>();
-            foreach (ContestParticipant singer in this.mParticipantsList)
+            Dictionary<Singer, int> dic = new Dictionary<Singer, int>();
+            foreach (Singer singer in this.mParticipantsList)
                 dic.Add(singer, 0);
             Console.WriteLine("Enter Crowd Number");
             int crowd = Convert.ToInt32(Console.ReadLine());
             for (int i = 0; i < crowd; i++)
             {
                 int choice = rnd.Next(0, this.mParticipantsList.Count);
-                ContestParticipant s = dic.ElementAt(choice).Key;
+                Singer s = dic.ElementAt(choice).Key;
                 dic[s]++;
             }
-            ContestParticipant loser = dic.Aggregate((l, r) => l.Value < r.Value ? l : r).Key;
+            Singer loser = dic.Aggregate((l, r) => l.Value < r.Value ? l : r).Key;
             return loser;
         }
         return this.mParticipantsList[0];

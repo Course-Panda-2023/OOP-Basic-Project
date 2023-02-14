@@ -19,15 +19,15 @@ Singer bandSinger3 = new Singer("BandSinger3", list);
 Guitar guitar = new Guitar("Guitarist");
 Drums drum = new Drums("Drumer");
 List<Singer> bandList = new List<Singer>() { bandSinger1, bandSinger2, bandSinger3 };
-Band band = new Band("Best Band", bandList, drum, guitar, list);
+BandWithGuitarAndDrums band = new BandWithGuitarAndDrums("Best Band", bandList, drum, guitar, list);
 List<ContestParticipant> participants = new List<ContestParticipant>() { ladyGaga, christinaAguilera, kesha, madona, brittneySpears, shakira, adele, rihanna, band };
 Console.WriteLine("Singers Created");
-ContestDecidedByCrowd contest = new ContestDecidedByCrowd(participants);
+ContestWithBands contest = new ContestWithBands(participants);
 Console.WriteLine("Contest Created");
-while (contest.SingersList.Count > 1)
+while (contest.ParticipantsList.Count > 1)
 {
     ContestParticipant loser = contest.SimulateRound();
-    contest.SingersList.Remove(loser);
+    contest.ParticipantsList.Remove(loser);
     Console.WriteLine(loser.Name + " Lost!");
 }
-Console.WriteLine(contest.SingersList[0].Name + " Is The Winner!");
+Console.WriteLine(contest.ParticipantsList[0].Name + " Is The Winner!");

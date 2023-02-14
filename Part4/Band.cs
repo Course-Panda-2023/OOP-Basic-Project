@@ -6,18 +6,6 @@ using System.Threading.Tasks;
 
 class Band : ContestParticipant
 {
-    private Drums mDrumer;
-    public Drums Drumer
-    {
-        get { return mDrumer; }
-        set { mDrumer = value; }
-    }
-    private Guitar mGuitarist;
-    public Guitar Guitarist
-    {
-        get { return mGuitarist; }
-        set { mGuitarist = value; }
-    }
     private List<Singer> mSingersList;
     public List<Singer> SingersList
     {
@@ -30,11 +18,9 @@ class Band : ContestParticipant
         get { return mSongList; }
         set { mSongList = value; }
     }
-    public Band(string name, List<Singer> singersList,Drums drumer, Guitar guitarist, List<Song> songsList) : base(name)
+    public Band(string name, List<Singer> singersList, List<Song> songsList) : base(name)
     {
         this.mSingersList = singersList;
-        this.mDrumer = drumer;
-        this.mGuitarist = guitarist;
         this.mSongList = songsList;
     }
 }
