@@ -17,7 +17,8 @@ namespace OOPBasicProject
             this._compName = name;
             this._compAge = age;
             this._compCity = city;
-            this._compCountry = country;
+            this._compCountry = country;   
+            //this.Song = new Song("Unknown", "Unknown", "Unknown", "Unknown");
         }
 
         public string CompetitorName
@@ -60,15 +61,16 @@ namespace OOPBasicProject
             get { return _performed; }
             set { _performed = value; }
         }
-        public void SelectRandomSongFromList(List<Song> songList)
+        public virtual void SelectRandomSongFromList(List<Song> songList)
         {
+            //Console.WriteLine("Selecting random song from list...");
             Random random = new Random();
             int randomSongIndex = random.Next(0, songList.Count);
-            Song = songList[randomSongIndex];
+            Song = new Song(songList[randomSongIndex]);
         }
-        public void PerformSong()
+        public virtual void PerformSong()
         {
-            if(_song != null)
+            if(Song == null)
             {
                 Console.WriteLine(_compName + " didn't get a song!");
                 Performed = false;

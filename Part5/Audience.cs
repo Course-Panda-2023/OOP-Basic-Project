@@ -11,7 +11,7 @@ namespace OOPBasicProject
         private string _audCity;
         private string _audCountry;
         Competitor _singerChoice;
-        //private People _singer;
+        
 
 
         public Audience(string name, int age, string city, string country) : base(name, age, city, country)
@@ -52,17 +52,16 @@ namespace OOPBasicProject
             set { _audCountry = value; }
         }
 
-        /*public Singer VoteForSinger(List<Singer> singers)
-        {
-            Random rand = new Random();
-            int winnerIndex = rand.Next(singers.Count);
-            _singerChoice = singers[winnerIndex];
-            return _singerChoice;
-        }*/
+        
         public Competitor VoteForSinger(List<Competitor> competitors)
         {
-            Random rand = new Random();
+            Random rand = new Random();            
             int winnerIndex = rand.Next(competitors.Count);
+            //TODO : optimize to avoid infinite loop
+            while (!competitors[winnerIndex].Performed)
+            {
+                winnerIndex = rand.Next(competitors.Count);
+            }
             _singerChoice = competitors[winnerIndex];
             return _singerChoice;
         }

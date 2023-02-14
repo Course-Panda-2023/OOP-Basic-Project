@@ -124,11 +124,7 @@ static void Part3()
     singers.Add(new OOPBasicProject.Singer("Justin Bieber", 42, "New York", "USA"));
     Helper.SelectingSongsByCompetitors(singers, CompetitionSongList);
 
-    /*foreach (var a in audience)
-    {
-        //Console.WriteLine(a.ToString());
-    }*/
-    //Console.WriteLine(audience.Count);
+    
     Competitor absoluteWinner = Helper.GetAbsoluteWinner(Helper.GetVotesFromAudience(singers, audience));
 
     Console.WriteLine("The winner of the song competition is: " + absoluteWinner.Name);
@@ -154,12 +150,7 @@ static void Part4()
     competitionCompetitors.Add(new OOPBasicProject.Band("Jonas Brothers"));
     competitionCompetitors.Add(new OOPBasicProject.Band("The Jackson 5"));  
     
-    /*foreach (Band band in competitionCompetitors)
-    {
-        
-        band.SelectSongByBandParticipants(CompetitionSongList);
-    }*/
-  
+      
     int soloistRandNum = random.Next(1, 10);
     int stringRandLength = random.Next(3, 12);
 
@@ -172,7 +163,11 @@ static void Part4()
 
     List<Audience> audience = new List<Audience>();
     audience = Helper.MakeRandomAudienceList();
-    
+    foreach (Competitor competitor in competitionCompetitors)
+    {        
+        competitor.SelectRandomSongFromList(CompetitionSongList);
+        competitor.PerformSong();
+    }
     Competitor absoluteWinner = Helper.GetAbsoluteWinner(Helper.GetVotesFromAudience(competitionCompetitors, audience));
     Console.WriteLine("The winner of the song competition is: " + absoluteWinner.CompetitorName);
     Console.ReadLine();
@@ -200,11 +195,13 @@ static void Part5()
     
     Helper.AddRandomCompetitors(competitionCompetitors, 10, "singer");
     Helper.AddRandomCompetitors(competitionCompetitors, 10, "band");
-    
+    foreach(Competitor competitor in competitionCompetitors)
+    {
+        competitor.SelectRandomSongFromList(CompetitionSongList);
+        competitor.PerformSong();
+    }
     Competitor absoluteWinner = Helper.GetAbsoluteWinner(Helper.GetVotesFromAudience(competitionCompetitors, Helper.MakeRandomAudienceList()));
     Console.WriteLine("The winner of the song competition is: " + absoluteWinner.CompetitorName);
     Console.ReadLine();
 }
 Part5();
-//TODO - Part 5 - Create a new method that will create a new competition and will return the winner of the competition
-//TODO bitsuim

@@ -14,12 +14,20 @@ namespace OOPBasicProject
         private string _author;
         private string _duration;
         private string _releaseYear;
+        public Song() { }
         public Song(string name, string artist, string duration, string releaseYear)
         {
-            _name = name;
-            _author = artist;
-            _duration = duration;
-            _releaseYear = releaseYear;
+            this._name = name;
+            this._author = artist;
+            this._duration = duration;
+            this._releaseYear = releaseYear;
+        }
+        public Song(Song other)
+        {
+            this.Name = other.Name;
+            this.Artist = other.Artist;
+            this.Duration = other.Duration;
+            this.ReleaseYear = other.ReleaseYear;
         }
         public string Name
         {

@@ -9,11 +9,10 @@ namespace OOPBasicProject
         private int _bandAge;
         private string _bandCity;
         private string _bandCountry;
-        //private Song _song;
-        //private int _voteCount;
+        
         private List<Competitor> _bandParticipants;
         private Random _random;
-        //private Rando
+        
         public Band(string name) : base(name, 0, "Unknown", "Unknown")
         {
             this._bandName = name;
@@ -65,26 +64,20 @@ namespace OOPBasicProject
             get { return _bandCountry; }
             set { _bandCountry = value; }
         }
-        public new void SelectRandomSongFromList(List<Song> songList)
+        public override void SelectRandomSongFromList(List<Song> songList)
         {
-            Random random = new Random();
+            //Console.WriteLine("The band {0} is selecting a song", BandName);
+            Random random = new Random();            
             int randomSongIndex = random.Next(0, songList.Count);
-            this.Song = songList[randomSongIndex];
+            this.Song = new Song(songList[randomSongIndex]);
+            //Console.WriteLine("The band {0} selected the song {1}", BandName, this.Song.Name);
             foreach (Competitor bandParticipant in _bandParticipants)
             {
-                bandParticipant.Song = this.Song;
+                bandParticipant.Song = new Song(this.Song);
+                //Console.WriteLine(bandParticipant.CompetitorName, bandParticipant.Song.Name);
             }
         }
-        /*public Song Song
-        {
-            get { return _song; }
-            set { _song = value; }
-        }*/
-        /*public int VoteCount
-        {
-            get { return _voteCount; }
-            set { _voteCount = value; }
-        }*/
+       
 
         public override string ToString()
         {
@@ -97,11 +90,11 @@ namespace OOPBasicProject
                 Console.WriteLine(bandParticipant.ToString());
             }
         }
-        public new void PerformSong()
+        public override void PerformSong()
         {
             //Console.WriteLine("The band {0} is performing", BandName);
             foreach (Competitor bandParticipant in _bandParticipants)
-            {
+            {                
                 if(this.Song == null) 
                 {
                     Console.WriteLine("The band {0} didn't get a song!", BandName);
