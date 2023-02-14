@@ -2,23 +2,34 @@ using System.Collections.Generic;
 
 class Band : Competitor
 {
-    public List<Singer> singers;
+    public List<Singer> Singers;
     public Band(string name, List<Song> songs, int numOfFans, List<Singer> singers) : base(name, songs, numOfFans)
     {
-        this.singers = singers;
+        this.Singers = singers;
     }
 
-    public void addMember(Singer member)
+    public void AddMember(Singer member)
     {
-        this.singers.Add(member);
+        this.Singers.Add(member);
     }
     
-    public virtual void dispMembers()
+    public void DispMembers()
     {
-        string members = ""; 
-        foreach (Singer singer in this.singers) 
-            members += $"{singer.name}, ";
+        Console.Write($"Band members are: ");
+        foreach (Singer singer in this.Singers) 
+            Console.Write($"{singer.Name}, ");
             // Console.WriteLine();
-        Console.WriteLine($"Band Members are: {members}");
+        Console.WriteLine();
+    }
+
+    public override bool IsValid()
+    {
+        if (this.Songs.Count == 0)
+        {
+            Console.WriteLine("Band has no songs");
+            return false;
+        }
+        else
+            return true;
     }
 }

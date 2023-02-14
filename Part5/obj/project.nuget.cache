@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "i8QawM/7btxbwF5dvMf+jYf5WaG9/RR2B7u8JUNNgjkBUiWC33CYEOAm64ZpbtZh896/BG6RhKSeIumPW+bP+A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\HILLEL\\CSharpeProjects\\OOP-Basic-Project\\Part5\\Part5.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\HILLEL\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.13\\microsoft.netcore.app.ref.6.0.13.nupkg.sha512",
+    "C:\\Users\\HILLEL\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.13\\microsoft.windowsdesktop.app.ref.6.0.13.nupkg.sha512",
+    "C:\\Users\\HILLEL\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.13\\microsoft.aspnetcore.app.ref.6.0.13.nupkg.sha512",
+    "C:\\Users\\HILLEL\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.13\\microsoft.netcore.app.host.win-x64.6.0.13.nupkg.sha512"
+  ],
+  "logs": []
+}

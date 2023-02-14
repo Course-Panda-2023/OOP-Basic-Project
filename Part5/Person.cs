@@ -1,12 +1,12 @@
 
 class Person
 {
-    public string? name {get;}
-    private uint age;
+    public string Name {get;}
+    private uint Age;
 
     public Person(string name, uint age)
     {
-        this.name = name;
-        this.age = age;
+        this.Name = name;
+        this.Age = age;
     }
 }

@@ -1,0 +1,5 @@
+C:\Users\HILLEL\CSharpeProjects\OOP-Basic-Project\Part1\obj\Debug\net7.0\Part1.csproj.AssemblyReference.cache
+C:\Users\HILLEL\CSharpeProjects\OOP-Basic-Project\Part1\obj\Debug\net7.0\Part1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HILLEL\CSharpeProjects\OOP-Basic-Project\Part1\obj\Debug\net7.0\Part1.AssemblyInfoInputs.cache
+C:\Users\HILLEL\CSharpeProjects\OOP-Basic-Project\Part1\obj\Debug\net7.0\Part1.AssemblyInfo.cs
+C:\Users\HILLEL\CSharpeProjects\OOP-Basic-Project\Part1\obj\Debug\net7.0\Part1.csproj.CoreCompileInputs.cache

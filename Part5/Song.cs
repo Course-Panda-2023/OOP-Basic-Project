@@ -1,18 +1,22 @@
 
 class Song
 {
-    public string? name;
-    private uint duration; // in seconds
-    private uint year;
-    Person songwriter;
+    public string Name;
+    private int DurationInSeconds; 
+    private int Year;
+    public string Lyrics;
+    Person Songwriter;
     
 
-    public Song(string name, uint duration, uint year, Person songwriter)
+    public Song(string name, int duration, int year, string Lyrics, Person songwriter)
     {
-        this.name = name;
-        this.duration = duration;
-        this.year = year;
-        this.songwriter = songwriter;
+        this.Name = name;
+        this.DurationInSeconds = duration;
+        this.Year = year;
+        this.Songwriter = songwriter;
+        this.Lyrics = Lyrics;
     }
+
+
 
 }

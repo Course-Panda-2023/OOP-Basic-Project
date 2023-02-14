@@ -8,47 +8,49 @@ using System.Security;
 class SingingCompetition5
 {
     Random rand = new Random();
-    public List<Competitor> competitors;
-    List<Person> voters;
+    public List<Competitor> Competitors;
+    List<Person> Voters;
 
     public SingingCompetition5(List<Competitor> competitors, List<Person> voters) 
     {
-        this.competitors = competitors;
-        this.voters = voters;
+        this.Competitors = competitors;
+        this.Voters = voters;
     }
 
     public Competitor this[int index]
     {
-        get {return competitors[index];}
-        set {competitors[index] = value;}
+        get {return Competitors[index];}
+        set {Competitors[index] = value;}
     }
 
-    public void addCompetitor(Competitor competitor)
+    public void AddCompetitor(Competitor competitor)
     {
-        this.competitors.Add(competitor);
+        if (competitor.IsValid())
+        {
+            this.Competitors.Add(competitor);
+        }
     }
     
-    public void addVoter(Person voter)
+    public void AddVoter(Person voter)
     {
-        this.voters.Add(voter);
+        this.Voters.Add(voter);
     }
 
-    public void RunCompetition()
+    private void CompetitorsPerfrom()
     {
-        Random rand = new Random();
-        
-        // Competitors choosing songs
-        foreach (Competitor competitor in this.competitors)
+        foreach (Competitor competitor in this.Competitors)
         {
             int chosenSongNumber = rand.Next(0, 3); 
-            Console.WriteLine($"{competitor.name} chose to sing the song: {competitor.songs[chosenSongNumber].name}");
+            Console.WriteLine($"{competitor.Name} chose to sing the song: {competitor.Songs[chosenSongNumber].Name}");
         }
+    }
 
-        // Voters voting for singers
-        int numOfCompetitors = this.competitors.Count;
+    private SortedDictionary<int, int> Voting()
+    {
+        int numOfCompetitors = this.Competitors.Count;
         SortedDictionary<int, int> votes = new SortedDictionary<int, int>();        
         int competitorVote;
-        foreach (Person voter in this.voters)
+        foreach (Person voter in this.Voters)
         {
             competitorVote = rand.Next(0, numOfCompetitors);
             if (votes.ContainsKey(competitorVote))
@@ -56,24 +58,36 @@ class SingingCompetition5
             else
                 votes[competitorVote] = 1;
         }
+        return votes;
+    }
 
-        // results
+    private Competitor ChooseWinner(SortedDictionary<int, int> votes)
+    {
         int maxVotes = 0;
-        Competitor chosenCompetitor = this.competitors[0];
+        Competitor chosenCompetitor = this.Competitors[0];
         foreach(KeyValuePair<int, int> entry in votes)
         {
             int numVotes = entry.Value;
-            Competitor competitor = this.competitors[entry.Key];
-            Console.WriteLine($"{competitor.name} got {numVotes} votes.");
+            Competitor competitor = this.Competitors[entry.Key];
+            Console.WriteLine($"{competitor.Name} got {numVotes} votes.");
             if (numVotes > maxVotes)
             {
                 maxVotes = numVotes;
                 chosenCompetitor = competitor;
             }
         }
+        return chosenCompetitor;
+    }
 
-        // Winner
-        Console.WriteLine($"And so, the winner is: {chosenCompetitor.name}");
+    public void RunCompetition()
+    {
+        this.CompetitorsPerfrom();
+
+        SortedDictionary<int, int> votes = this.Voting();
+        
+        Competitor chosenCompetitor = this.ChooseWinner(votes);
+        
+        Console.WriteLine($"And so, the winner is: {chosenCompetitor.Name}");
 
     }
 }

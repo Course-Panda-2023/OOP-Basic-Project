@@ -1,20 +1,22 @@
 
 abstract class Competitor
 {
-    public string? name {get;}
+    public string Name {get;}
 
-    public List<Song> songs = new List<Song>();
-    private int numOfFans;
+    public List<Song> Songs;
+    private int NumOfFans;
 
     public Competitor(string name, List<Song> songs, int numOfFans)
     {
-        this.name = name;
-        this.songs = songs;
-        this.numOfFans = numOfFans;
+        this.Name = name;
+        this.Songs = songs;
+        this.NumOfFans = numOfFans;
     }
     
-    public void addSong(Song song)
+    public void AddSong(Song song)
     {
-        this.songs.Add(song);
+        this.Songs.Add(song);
     }
+    public abstract bool IsValid();
+    
 }
