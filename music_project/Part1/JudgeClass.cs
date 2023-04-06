@@ -14,9 +14,15 @@ namespace contest
         {
             this.name = name;
         }
-        public void RunContest(Contestant contestant1,Contestant contestant2)
+        /// <summary>
+        /// prints winner and returns loser
+        /// </summary>
+        /// <param name="contestant1"></param>
+        /// <param name="contestant2"></param>
+        /// <returns></returns>
+        public Contestant RunContest(Contestant contestant1,Contestant contestant2)
         {
-            Console.WriteLine(name + " will judge between " + contestant1.name + " and " + contestant2.name);
+            Console.WriteLine(name + " pairs " + contestant1.name + " against " + contestant2.name);
             var random = new Random(); // generates random double between 0 and 1
             double mood = random.NextDouble();
 
@@ -25,17 +31,25 @@ namespace contest
 
             (double proformace1, double proformace2) =(Math.Abs(mood - song1), Math.Abs(mood - song2));
 
-            if (proformace1 == proformace2)
+            if (proformace1 == proformace2) // extremely low probability
             {
                 Console.WriteLine("tie! starting rematch");
-                RunContest(contestant1, contestant2);
+                return RunContest(contestant1, contestant2);
             }
 
 
             else if (proformace1 < proformace2)
-                Console.WriteLine(contestant1.name + " wins!");
+            {
+                Console.WriteLine(contestant1.name + " won!");
+                return contestant2;
+            }
+
             else
-                Console.WriteLine(contestant2.name + " wins!");
+            {
+                Console.WriteLine(contestant2.name + " won!");
+                return contestant1;
+            }
+
         }
     }
 }
