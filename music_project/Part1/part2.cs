@@ -5,7 +5,7 @@ using contest;
 //contest1.Run();
 //ContestClass2 contest2 = new ContestClass2();
 //contest2.Run();
-ContestClass3 contest3 = new ContestClass3();
+ContestClass3 contest3 = new ContestClass4();
 contest3.Run();
 
 
@@ -16,7 +16,7 @@ namespace contest
         Judge SimonCowell = new Judge("Simon Cowell");
         protected List<Contestant> contestants = new List<Contestant>();
 
-        public void Init()
+        public virtual void Init()
         {
             string[] names = { "Madonna", "Britney Spears", "Shakira", "Adele", "Avril Lavigne", "Nicki Minaj", "Ke$ha", "Kelly Clarkson", "Katy Perry", "Rihanna", "Beyoncé", "Justin Bieber", "Christina Aguilera", "Lady Gaga" };
             foreach (string name in names)

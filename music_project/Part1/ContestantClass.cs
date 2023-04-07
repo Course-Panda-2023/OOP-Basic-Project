@@ -26,7 +26,7 @@ namespace contest
     }
     class ContestantPart3: Contestant
     {
-        ContestantPart3(string name):base(name) { }
+        public ContestantPart3(string name):base(name) { }
         public override double sing()
         {
             Random rand =  new Random();
