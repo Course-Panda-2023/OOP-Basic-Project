@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace contest
 {
-    class Contestant
+    public class Contestant
     {
         public string name;
         public Contestant(string name)
@@ -17,11 +17,22 @@ namespace contest
         /// simulates preformance of a song by generating random double between 0 and 1
         /// </summary>
         /// <returns></returns>
-        public double sing()
+        public virtual double sing()
         {
             var random = new Random();
             double song = random.NextDouble();
             return song;
+        }
+    }
+    class ContestantPart3: Contestant
+    {
+        ContestantPart3(string name):base(name) { }
+        public override double sing()
+        {
+            Random rand =  new Random();
+            int mySong = rand.Next( ContestClass3.songs.Count);
+            Console.WriteLine(name + " chose to sing " + ContestClass3.songs[mySong]);
+            return base.sing();
         }
     }
 }

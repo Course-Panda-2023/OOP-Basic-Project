@@ -1,21 +1,20 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using contest;
 
-ContestClass contest1 = new ContestClass();
-contest1.Run2();
+//ContestClass1 contest1 = new ContestClass1();
+//contest1.Run();
+//ContestClass2 contest2 = new ContestClass2();
+//contest2.Run();
+ContestClass3 contest3 = new ContestClass3();
+contest3.Run();
 
 
 namespace contest
 {
-    class ContestClass
+    public class ContestClass2
     {
         Judge SimonCowell = new Judge("Simon Cowell");
-        List<Contestant> contestants = new List<Contestant>();
-
-        /* Part 1
-        Contestant Christina = new Contestant("Christina Aguilera");
-        Contestant LadyGaga = new Contestant("Lady Gaga");
-        */
+        protected List<Contestant> contestants = new List<Contestant>();
 
         public void Init()
         {
@@ -25,13 +24,8 @@ namespace contest
                 contestants.Add(new Contestant(name));
             }
         }
-
-        /*
-        public void Run1()
-        {
-            SimonCowell.RunContest(Christina, LadyGaga);
-        }*/
-        public void Run2()
+        
+        public virtual void Run()
         {
             Init();
             while (contestants.Count > 1)
